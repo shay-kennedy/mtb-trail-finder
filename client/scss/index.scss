@@ -1,0 +1,99 @@
+a, a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+button, .input-button {
+	cursor: pointer;
+}
+
+html {
+	/*background-image: url("https://static.pexels.com/photos/26559/pexels-photo-26559-large.jpg");*/
+	background-image: url("http://i.imgur.com/iXHO2Q3.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+body {
+	width: 85%;
+	margin: 2em auto;
+}
+
+#app, body {
+	background-color: transparent; 
+}
+
+.search, .search:hover {
+	text-decoration: none;
+	color: white;
+}
+
+input.form-control:focus {
+	border-color: #5cb85c;
+}
+
+.trails {
+	margin: 2em 0 2em 0;
+	padding: 1em;
+	border: .5px solid black;
+	background-color: #f5f5dc;
+	opacity: 0.8;
+}
+
+.login-page, .inputs {
+	text-align: center;
+}
+
+.login-page h1 {
+	margin: 4em 0 4em 0;
+}
+
+.login-button {
+	margin: 0 0 2em 0;
+}
+
+h3.trail-title {
+	text-decoration: underline;
+}
+
+.trail-title a:hover {
+	color: #5cb85c;
+}
+
+.trail-top h3 {
+	float: left;
+}
+
+.trail-top button {
+	float: right;
+}
+
+.favorites-button {
+	margin: auto;
+}
+
+.title-bar .page-title {
+	text-align: center;
+}
+
+.logout {
+	text-align: center;
+	margin-top: 4em;
+}
+
+.input {
+	width: 50%;
+	margin: 2em auto 2em auto;
+}
+
+.sub-header {
+	text-align: center;
+	margin-top: 1.5em;
+}
+
+.title-bar {
+	margin: 0;
+}
+
