@@ -38,7 +38,6 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOne({googleID: profile.id}, function(err, user) {
-      console.log('USER*******', user);
       if (!user) {
         User.create({
           googleID: profile.id,
@@ -46,11 +45,9 @@ passport.use(new GoogleStrategy({
           favorites: [],
           fullName: profile.displayName
         }, function(err, users) {
-          console.log('USERS!!!!', users);
           return done(err, users);
         });
       } else {
-        console.log('USER&&&&&&&&', user);
         return done(err, user);
       }
     });
@@ -67,9 +64,7 @@ app.get('/auth/google/callback',
     session: false
   }),
   function(req, res) {
-    console.log('REQ USER', req.user);
     res.cookie('accessToken', req.user.accessToken, {expires: 0});
-    console.log('accessToken', req.user.accessToken);
     res.redirect('/#/trails');
   }
 );
@@ -80,10 +75,7 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/user', passport.authenticate('bearer', {session: false}), function(req, res) {
-  console.log('REQ', req.user.googleID);
-  console.log('Hit /user');
   var googleID = req.user.googleID;
-  console.log('GOOGLE ID', googleID);
   User.find({googleID: googleID}, function(err, users) {
     if (err) {
       res.send("Error has occured")

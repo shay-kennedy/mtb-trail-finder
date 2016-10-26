@@ -45,7 +45,7 @@ var fetchUser = function() {
   	var headers = new Headers({
   		Authorization: 'bearer ' + token
   	});
-    var url = 'http://localhost:8080/user';
+    var url = 'https://mtb-trail-finder.herokuapp.com/user';
     return fetch(url, {headers: headers}).then(function(response) {
       if (response.status < 200 || response.status >= 300) {
         var error = new Error(response.statusText);
@@ -76,7 +76,7 @@ var getTrails = function(location) {
     var stateAndZip = cityAndRest[1].trim().split(' ');
     var state = stateAndZip[0];
     var zip = stateAndZip[1];
-    var url = `http://localhost:8080/trails/${city}/${state}`;
+    var url = `https://mtb-trail-finder.herokuapp.com/trails/${city}/${state}`;
     return fetch(url)
     .then(function(response) {
       if (response.status < 200 || response.status >= 300) {
@@ -104,7 +104,7 @@ var addFavorite = function(props) {
   return function(dispatch) {
     var token = Cookies.get('accessToken');
     var userId = props.userId;
-    var url = `http://localhost:8080/user/${userId}`;
+    var url = `https://mtb-trail-finder.herokuapp.com/user/${userId}`;
   return fetch(url,
   {
     method: 'put',
@@ -148,7 +148,7 @@ var removeFavorite = function(props) {
   return function(dispatch) {
     var token = Cookies.get('accessToken');
     var trail_id = props.trail_id;
-    var url = `http://localhost:8080/user/favorites/${trail_id}`;
+    var url = `https://mtb-trail-finder.herokuapp.com/user/favorites/${trail_id}`;
   return fetch(url,
   {
     method: 'put',
