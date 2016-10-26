@@ -37,8 +37,8 @@ passport.use(new GoogleStrategy({
   callbackURL: process.env.CALLBACKURL || config.googleAuth.callbackURL,
   },
   function(accessToken, refreshToken, profile, done) {
-    User.find({googleID: profile.id}, function(err, user) {
-      if (!user.length) {
+    User.findOne({googleID: profile.id}, function(err, user) {
+      if (!user) {
         User.create({
           googleID: profile.id,
           accessToken: accessToken,
@@ -75,7 +75,7 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/user', passport.authenticate('bearer', {session: false}), function(req, res) {
-  User.find(function(err, user) {
+  User.find({}, function(err, user) {
     if (err) {
       res.send("Error has occured")
     } else {

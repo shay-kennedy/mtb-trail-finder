@@ -14,7 +14,7 @@ var reducer = function(state, action) {
 		// Updates state upon fetch user success
 		case actions.FETCH_USER_SUCCESS:
 			// console.log('FETCH_USER_SUCCESS');
-			var user = action.user;
+			var user = action.user[0];
 			state = Object.assign({}, state, {
 				favorites: user.favorites,
 				googleID: user.googleID
