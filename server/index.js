@@ -75,11 +75,11 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/user', passport.authenticate('bearer', {session: false}), function(req, res) {
-  User.find({}, function(err, users) {
+  User.find(function(err, user) {
     if (err) {
       res.send("Error has occured")
     } else {
-      res.json(users);
+      res.json(user);
     }
   });
 });
