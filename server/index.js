@@ -37,17 +37,20 @@ passport.use(new GoogleStrategy({
   callbackURL: process.env.CALLBACKURL || config.googleAuth.callbackURL,
   },
   function(accessToken, refreshToken, profile, done) {
-    User.find({googleID: profile.id}, function(err, user) {
-      if (!user.length) {
+    User.findOne({googleID: profile.id}, function(err, user) {
+      console.log('USER*******', user);
+      if (!user) {
         User.create({
           googleID: profile.id,
           accessToken: accessToken,
           favorites: [],
           fullName: profile.displayName
         }, function(err, users) {
-          return done(err, user);
+          console.log('USERS!!!!', users);
+          return done(err, users);
         });
       } else {
+        console.log('USER&&&&&&&&', user);
         return done(err, user);
       }
     });
@@ -64,7 +67,9 @@ app.get('/auth/google/callback',
     session: false
   }),
   function(req, res) {
+    console.log('REQ USER', req.user);
     res.cookie('accessToken', req.user.accessToken, {expires: 0});
+    console.log('accessToken', req.user.accessToken);
     res.redirect('/#/trails');
   }
 );
@@ -75,7 +80,11 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/user', passport.authenticate('bearer', {session: false}), function(req, res) {
-  User.find({}, function(err, users) {
+  console.log('REQ', req.user.googleID);
+  console.log('Hit /user');
+  var googleID = req.user.googleID;
+  console.log('GOOGLE ID', googleID);
+  User.find({googleID: googleID}, function(err, users) {
     if (err) {
       res.send("Error has occured")
     } else {
@@ -87,7 +96,7 @@ app.get('/user', passport.authenticate('bearer', {session: false}), function(req
 // Bearer Strategy
 passport.use(new BearerStrategy(
   function(token, done) {
-  User.find({ accessToken: token },
+  User.findOne({ accessToken: token },
     function(err, users) {
       if(err) {
           return done(err)
