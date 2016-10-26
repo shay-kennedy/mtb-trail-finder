@@ -10,6 +10,7 @@ app.use(express.static(process.env.CLIENT_PATH));
 // Passport strategies
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var BearerStrategy = require('passport-http-bearer').Strategy;
+var AnonymousStrategy = require('passport-anonymous').Strategy;
 
 var passport = require("passport");
 var bodyParser = require("body-parser");
@@ -101,6 +102,9 @@ passport.use(new BearerStrategy(
   );
 }
 ));
+
+// Anonymous Strategy
+passport.use(new AnonymousStrategy());
 
 // PUT: Add to favorites (avoids duplicates)
 app.put('/user/:googleID', passport.authenticate('bearer', {session: false}),
