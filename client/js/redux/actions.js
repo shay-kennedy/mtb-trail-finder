@@ -64,13 +64,8 @@ var fetchUser = function() {
 };
 
 // GET request trail info from the server-side API request based on location
-var getTrails = function(location) {
+var getTrails = function(city, state) {
   return function(dispatch) {
-    var cityAndRest = location.split(',');
-    var city = cityAndRest[0];
-    var stateAndZip = cityAndRest[1].trim().split(' ');
-    var state = stateAndZip[0];
-    var zip = stateAndZip[1];
     var url = `/trails/${city}/${state}`;
     return fetch(url)
     .then(function(response) {
