@@ -1,15 +1,28 @@
-Mountain Biking Trail App
+# MTB Trail Finder
 
-This app will allow you to enter a location by city and state and will return a list of mountain biking trails in that specific area.
+----
+
+### [Live App](https://mtb-trail-finder.herokuapp.com)
 
 
-Features:
+> This app will allow you to enter a location by city and state and will return a list of mountain biking trails in that specific area. Each trail will include the trail name, trail distance, trail description and directions. The trail name is also a link to a webpage for that specific trail which contains more detailed information.
 
--Google OAuth
--Search by location using city, state
--Return list of mountain biking trails
--Ability to add trails as favorites
+----
+### Technology
+* **ReactJS**
+* **Redux**
+* **React Router**
+* **NodeJS**
+* **MongoDB**
+* **Mongoose**
+* **Express**
+* **Passport**
+* **Bootstrap**
 
-Live app:
-
-https://mtb-trail-finder.herokuapp.com
+----
+### App Features
+* Google Authentication/Login
+* Search By City/State
+* Return List of MTB Trails with Trail Info
+* Ability to add trails as favorites
+* User trail favorites saved to MongoDB
