@@ -1,8 +1,6 @@
 require('isomorphic-fetch');
 var Cookies = require("js-cookie");
 
-// var rootUrl = process.env.ROOT_URL || 'http://localhost:8080';
-
 
 var FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 var fetchUserSuccess = function(user, score, answer) {
@@ -40,8 +38,6 @@ var getTrailsError = function(error) {
 var fetchUser = function() {
   return function(dispatch) {
     var token = Cookies.get('accessToken');
-    console.log('TOKEN', token);
-    console.log('COOKIES', Cookies);
   	var headers = new Headers({
   		Authorization: 'bearer ' + token
   	});
@@ -55,7 +51,6 @@ var fetchUser = function() {
       return response.json();
     })
     .then(function(user) {
-      console.log('USER', user);
       return dispatch(
         fetchUserSuccess(user)
       );

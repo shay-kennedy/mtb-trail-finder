@@ -38,37 +38,3 @@ var Input = React.createClass({
 var Container = connect()(Input);
 
 module.exports = Container;
-
-
-
-// <div>
-// 	<form onSubmit={this.onSearch} >		
-// 		<input placeholder='Enter City and State' ref="location" />
-// 		<button type='submit' >Search</button>					
-// 	</form>
-// </div>
-
-// <div>
-// 	<input placeholder='Enter City and State' ref="location" />
-// 	<button onClick={this.onSearch} >
-// 		<Link to={'/trails/list'} >Search</Link>
-// 	</button>					
-// </div>
-
-// <div>
-// 	<form>
-// 		<Link to={'/trails/list'} >	
-// 			<input placeholder="Enter City and State" ref="location" type="text" required />
-// 			<button onClick={this.onSearch} >
-// 				Search
-// 			</button>
-// 		</Link>
-// 	</form>
-// </div>
-
-// <div>
-// 	<input placeholder='Enter City, State' ref="location" />
-// 	<button onClick={this.onSearch} className="btn btn-success" >
-// 		<Link to={'/trails/list'} className="search" >Search</Link>
-// 	</button>					
-// </div>

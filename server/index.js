@@ -10,7 +10,7 @@ app.use(express.static(process.env.CLIENT_PATH));
 // Passport strategies
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var BearerStrategy = require('passport-http-bearer').Strategy;
-var AnonymousStrategy = require('passport-anonymous').Strategy;
+import { Strategy as AnonymousStrategy } from 'passport-anonymous';
 
 var passport = require("passport");
 var bodyParser = require("body-parser");
@@ -70,22 +70,6 @@ app.get('/auth/google/callback',
   }
 );
 
-app.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/');
-});
-
-app.get('/user', passport.authenticate('bearer', {session: false}), function(req, res) {
-  var googleID = req.user.googleID;
-  User.find({googleID: googleID}, function(err, users) {
-    if (err) {
-      res.send("Error has occured")
-    } else {
-      res.json(users);
-    }
-  });
-});
-
 // Bearer Strategy
 passport.use(new BearerStrategy(
   function(token, done) {
@@ -106,8 +90,26 @@ passport.use(new BearerStrategy(
 // Anonymous Strategy
 passport.use(new AnonymousStrategy());
 
+// GET: Logs user out, ends their session and redirects then to the login endpoint
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+// GET: Retrieves entire user object
+app.get('/user', passport.authenticate(['bearer', 'anonymous'], {session: false}), function(req, res) {
+  var googleID = req.user.googleID;
+  User.find({googleID: googleID}, function(err, users) {
+    if (err) {
+      res.json({anonymous: true})
+    } else {
+      res.json(users);
+    }
+  });
+});
+
 // PUT: Add to favorites (avoids duplicates)
-app.put('/user/:googleID', passport.authenticate('bearer', {session: false}),
+app.put('/user/:googleID', passport.authenticate(['bearer', 'anonymous'], {session: false}),
   function(req, res) {
     User.update({ 'googleID':req.params.googleID }, 
                   { $addToSet : { 'favorites':req.body.favorites } },
@@ -120,7 +122,7 @@ app.put('/user/:googleID', passport.authenticate('bearer', {session: false}),
   });
 
 // PUT: Remove from favorites
-app.put('/user/favorites/:trail_id', passport.authenticate('bearer', {session: false}),
+app.put('/user/favorites/:trail_id', passport.authenticate(['bearer', 'anonymous'], {session: false}),
   function(req, res) {
     var trailID = parseInt(req.params.trail_id);
     var googleID = req.body.googleID;

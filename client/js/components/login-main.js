@@ -16,6 +16,7 @@ var Login = React.createClass({
 				<form onSubmit={this.fetchUser}>
 					<a href="/auth/google"><input type='button' value='Login' className='input-button btn btn-success login-button' /></a>
 					<p>Please login with your Google credentials so that we can provide you with a better experience!</p>
+					<a href="/#/trails"><input type='button' value='Demo Login' className='input-button btn btn-warning demo-login-button' /></a>
 				</form>
 			</div>
 		)
