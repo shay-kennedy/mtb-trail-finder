@@ -3,7 +3,8 @@ var connect = require('react-redux').connect;
 var actions = require('../redux/actions');
 var router = require('react-router');
 var Link = router.Link;
-
+var Dialog = require('react-bootstrap-dialog');
+Dialog.setOptions({primaryClassName: 'btn-success'});
 	
 var Input = React.createClass({
 	// Dispatches the request to retreive trails upon clicking 'Search' button
@@ -11,7 +12,7 @@ var Input = React.createClass({
 		event.preventDefault();
 		var location = this.refs.location.value;
 		if (location == '') {
-			alert('Please enter a location.');
+			this.refs.dialog.showAlert('Please enter a location.');
 			return;
 		};	
 		this.props.dispatch(actions.getTrails(location));
@@ -26,6 +27,7 @@ var Input = React.createClass({
 		      <span className="input-group-btn">
 		        <button onClick={this.onSearch} className="btn btn-success btn-secondary" type="button" >
 							<Link to={'/trails/list'} className="search" >Search</Link>
+							<Dialog ref="dialog" />
 						</button>
 		      </span>
 		    </div>
