@@ -2,20 +2,14 @@ var React = require("react");
 var actions = require('../redux/actions');
 var connect = require('react-redux').connect;
 var TrailsMain = require('./trails-main');
-
+var Confirm = require('react-confirm-bootstrap');
 
 
 var FavoriteDetail = React.createClass ({			
 	// Dispatches action to remove trail from favorites when you click the 'Remove from Favorites' button
 	removeFromFavorites: function() {
-		var contin = confirm('Are you sure you would like to remove this favorite?');
-		if (contin === true) {
-			console.log('ITEM REMOVED');
 			this.props.dispatch(actions.removeFavorite(this.props));
 			this.props.dispatch(actions.fetchUser());
-		} else {
-			return;
-		}
 	},
 	render: function() {
 		// Cleans up the API description and directions fields
@@ -59,7 +53,13 @@ var FavoriteDetail = React.createClass ({
 						<h3 className="trail-title"><a href={this.props.url} target="_blank"> {this.props.name} </a></h3>
 					</div>
 					<div className="col-xs">
-						<button onClick={this.removeFromFavorites} className="btn btn-outline-danger btn-sm" >Remove from Favorites</button>
+						<Confirm 
+								onConfirm={this.removeFromFavorites} 
+								body="Are you sure you want to remove this trail from your favorites?"
+								confirmText="Confirm Remove"
+								title="Remove from Favorites">
+							<button className="btn btn-outline-danger btn-sm" >Remove from Favorites</button>
+						</Confirm>
 					</div>
 				</div>
 				<p><strong>Location:</strong> {this.props.city}, {this.props.state}</p>

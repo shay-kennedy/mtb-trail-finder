@@ -2,18 +2,13 @@ var React = require("react");
 var actions = require('../redux/actions');
 var connect = require('react-redux').connect;
 var TrailsMain = require('./trails-main');
+var Confirm = require('react-confirm-bootstrap');
 
 
 var TrailDetail = React.createClass ({			
 	// Dispatches action to add trail to favorites when you click the 'Add to Favorites' button
 	addToFavorites: function() {
-		var contin = confirm('Are you sure you would like to add this favorite?');
-		if (contin === true) {
-			console.log('ITEM ADDED');
-			this.props.dispatch(actions.addFavorite(this.props));
-		} else {
-			return;
-		}	
+			this.props.dispatch(actions.addFavorite(this.props));	
 	},
 	render: function() {
 		// Cleans up the API description and directions fields
@@ -57,7 +52,14 @@ var TrailDetail = React.createClass ({
 						<h3 className="trail-title"><a href={this.props.url} target="_blank"> {this.props.name} </a></h3>
 					</div>
 					<div className="col-xs">
-						<button onClick={this.addToFavorites} className="btn btn-outline-success btn-sm">Add to Favorites</button>
+						<Confirm 
+								onConfirm={this.addToFavorites} 
+								body="Are you sure you want to add this trail to your favorites?"
+								confirmText="Confirm Add"
+								confirmBSStyle="success"
+								title="Add to Favorites">
+							<button className="btn btn-outline-success btn-sm">Add to Favorites</button>
+						</Confirm>
 					</div>
 				</div>
 				<p><strong>Location:</strong> {this.props.city}, {this.props.state}</p>
