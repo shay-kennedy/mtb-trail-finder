@@ -6,9 +6,10 @@ This app will allow you to enter a location by city and state and will return a 
 Features:
 
 -Google OAuth
-
 -Search by location using city, state
-
 -Return list of mountain biking trails
-
 -Ability to add trails as favorites
+
+Live app:
+
+https://mtb-trail-finder.herokuapp.com
