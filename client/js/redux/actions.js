@@ -3,7 +3,7 @@ var Cookies = require("js-cookie");
 
 
 var FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
-var fetchUserSuccess = function(user, score, answer) {
+var fetchUserSuccess = function(user) {
   return {
     type: FETCH_USER_SUCCESS,
     user: user
@@ -155,9 +155,9 @@ var removeFavorite = function(props) {
       }
       return response.json();
     })
-    .then(function(response) {
+    .then(function(user) {
       return dispatch(
-        fetchUserSuccess()
+        fetchUserSuccess(user)
         );
     })
     .catch(function(error) {

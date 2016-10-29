@@ -12,7 +12,7 @@ var Input = React.createClass({
 		event.preventDefault();
 		var state = this.refs.state.value;
 		var city = this.refs.city.value;
-		if (state == '') {
+		if (city == '' || state== '') {
 			this.refs.dialog.showAlert('Please enter a city and state.');
 			return;
 		} 

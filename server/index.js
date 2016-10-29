@@ -111,13 +111,14 @@ app.get('/user', passport.authenticate(['bearer', 'anonymous'], {session: false}
 // PUT: Add to favorites (avoids duplicates)
 app.put('/user/:googleID', passport.authenticate(['bearer', 'anonymous'], {session: false}),
   function(req, res) {
-    User.update({ 'googleID':req.params.googleID }, 
+    User.findOneAndUpdate({ 'googleID':req.params.googleID }, 
                   { $addToSet : { 'favorites':req.body.favorites } },
-      function(err, user) {
+                  {new: true},
+      function(err, users) {
         if(err) {
           return res.send(err)
         }
-        return res.send({message: "Favorite added!"});
+        return res.json(users);
       });
   });
 
@@ -126,14 +127,14 @@ app.put('/user/favorites/:trail_id', passport.authenticate(['bearer', 'anonymous
   function(req, res) {
     var trailID = parseInt(req.params.trail_id);
     var googleID = req.body.googleID;
-    User.update( { 'favorites.trail_id':trailID, 'googleID':googleID }, 
+    User.findOneAndUpdate( { 'favorites.trail_id':trailID, 'googleID':googleID }, 
                   { $pull : { 'favorites':{ 'trail_id':trailID } } },
                   { new: true },
-      function(err, user) {
+      function(err, users) {
         if(err) {
           return res.send(err)
         }
-        return res.send({message: "Favorite removed!"});
+        return res.json(users);
       });
   });
 
