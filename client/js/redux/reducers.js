@@ -27,7 +27,6 @@ var reducer = function(state, action) {
 		
 		// Updates state upon location trail search
 		case actions.GET_TRAILS_SUCCESS:
-			// console.log('GET_TRAILS_SUCCESS');
 			var trails = action.trails;
 			state = Object.assign({}, state, {
 				trails: trails,

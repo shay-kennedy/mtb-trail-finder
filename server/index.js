@@ -137,7 +137,7 @@ app.put('/user/favorites/:trail_id', passport.authenticate(['bearer', 'anonymous
       });
   });
 
-// GET: API data for trails
+// GET: API data for trails by city & state
 app.get('/trails/:city/:state', function(req, res) {
   var city = req.params.city;
   var state = req.params.state;

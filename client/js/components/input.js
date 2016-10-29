@@ -11,12 +11,11 @@ var Input = React.createClass({
 	onSearch: function(event){
 		event.preventDefault();
 		var state = this.refs.state.value;
-		console.log("STATE", state);
 		var city = this.refs.city.value;
-		if (city == '' || state == '') {
+		if (state == '') {
 			this.refs.dialog.showAlert('Please enter a city and state.');
 			return;
-		};
+		} 
 		this.props.dispatch(actions.getTrails(city, state));
 		this.refs.city.value = '';
 		this.refs.state.value = '';	
