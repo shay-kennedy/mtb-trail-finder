@@ -15,25 +15,25 @@ var reducer = function(state, action) {
 		case actions.FETCH_USER_SUCCESS:
 			// console.log('FETCH_USER_SUCCESS');
 			var user = action.user[0];
-			state = Object.assign({}, state, {
+			var newState = Object.assign({}, state, {
 				favorites: user.favorites,
 				googleID: user.googleID
 			});
-			return state;
+			return newState;
 		
-		case action.FETCH_USER_ERROR:
+		case actions.FETCH_USER_ERROR:
 			// console.log('FETCH_USER_ERROR');
 			return state;
 		
 		// Updates state upon location trail search
 		case actions.GET_TRAILS_SUCCESS:
 			var trails = action.trails;
-			state = Object.assign({}, state, {
+			var newState = Object.assign({}, state, {
 				trails: trails,
 			});
-			return state;
+			return newState;
 
-		case action.GET_TRAILS_ERROR:
+		case actions.GET_TRAILS_ERROR:
 			// console.log('GET_TRAILS_ERROR');
 			return state;
 	
