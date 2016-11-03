@@ -11,7 +11,7 @@ var TrailList = React.createClass({
 	},
 	render: function(props) {
 		// Maps through array of search results passing in props to TrailDetail componenet
-		var trailList = this.props.trails.places.map(function(trail) {
+		var trailList = this.props.trails.map(function(trail) {
 			return (
 				<TrailDetail 
 					key={trail.unique_id}

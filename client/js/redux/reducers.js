@@ -2,7 +2,7 @@ var actions = require('./actions');
 var update = require('react-addons-update');
 
 var initialState = {
-	trails: {places:[]},
+	trails: [],
 	favorites: [],
 	googleID: null
 };
@@ -14,7 +14,7 @@ var reducer = function(state, action) {
 		// Updates state upon fetch user success
 		case actions.FETCH_USER_SUCCESS:
 			// console.log('FETCH_USER_SUCCESS');
-			var user = action.user[0];
+			var user = action.user;
 			var newState = Object.assign({}, state, {
 				favorites: user.favorites,
 				googleID: user.googleID

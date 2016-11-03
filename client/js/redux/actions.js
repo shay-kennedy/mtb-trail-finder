@@ -77,6 +77,7 @@ var getTrails = function(city, state) {
       return response.json();
     })
     .then(function(trails) {
+      console.log('TRAILS', trails);
       return dispatch(
         getTrailsSuccess(trails)
       );

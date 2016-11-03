@@ -99,11 +99,11 @@ app.get('/logout', function(req, res) {
 // GET: Retrieves entire user object
 app.get('/user', passport.authenticate(['bearer', 'anonymous'], {session: false}), function(req, res) {
   var googleID = req.user.googleID;
-  User.find({googleID: googleID}, function(err, users) {
+  User.findOne({googleID: googleID}, function(err, user) {
     if (err) {
       res.json({anonymous: true})
     } else {
-      res.json(users);
+      res.json(user);
     }
   });
 });
@@ -114,11 +114,11 @@ app.put('/user/:googleID', passport.authenticate(['bearer', 'anonymous'], {sessi
     User.findOneAndUpdate({ 'googleID':req.params.googleID }, 
                   { $addToSet : { 'favorites':req.body.favorites } },
                   {new: true},
-      function(err, users) {
+      function(err, user) {
         if(err) {
           return res.send(err)
         }
-        return res.json(users);
+        return res.json(user);
       });
   });
 
@@ -130,11 +130,11 @@ app.put('/user/favorites/:trail_id', passport.authenticate(['bearer', 'anonymous
     User.findOneAndUpdate( { 'favorites.trail_id':trailID, 'googleID':googleID }, 
                   { $pull : { 'favorites':{ 'trail_id':trailID } } },
                   { new: true },
-      function(err, users) {
+      function(err, user) {
         if(err) {
           return res.send(err)
         }
-        return res.json(users);
+        return res.json(user);
       });
   });
 
@@ -146,7 +146,7 @@ app.get('/trails/:city/:state', function(req, res) {
   .header('X-Mashape-Key', 'Njf9yX0QmImshN5LtDdUS9MQcM68p1BVQxqjsna4e89QJjc3NI')
   .header('Accept', 'text/plain')
   .end(function (result) {
-    return res.send(result.body);
+    return res.send(result.body.places);
   });
 });
 
