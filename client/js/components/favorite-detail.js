@@ -8,8 +8,7 @@ var Confirm = require('react-confirm-bootstrap');
 var FavoriteDetail = React.createClass ({			
 	// Dispatches action to remove trail from favorites when you click the 'Remove from Favorites' button
 	removeFromFavorites: function() {
-			this.props.dispatch(actions.removeFavorite(this.props));
-			this.props.dispatch(actions.fetchUser());
+		this.props.dispatch(actions.removeFavorite(this.props));
 	},
 	render: function() {
 		// Cleans up the API description and directions fields
