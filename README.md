@@ -9,7 +9,7 @@
 
 ----
 ### Screenshot
-!(screenshot.png)
+![Screenshot](screenshot.png)
 
 ----
 ### Technology
