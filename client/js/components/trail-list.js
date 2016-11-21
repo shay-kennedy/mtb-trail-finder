@@ -3,6 +3,7 @@ var connect = require('react-redux').connect;
 var actions = require('../redux/actions');
 var Input = require('./input');
 var TrailDetail = require('./trail-detail');
+var Link = require('react-router').Link;
 
 
 var TrailList = React.createClass({
@@ -29,6 +30,9 @@ var TrailList = React.createClass({
 		// Returns each trail item from the search trail array
 		return (
 			<div className="display">
+				<div className="favorites-button">
+					<Link to={'/trails/favorites'}><input type='button' value='Favorites' className='input-button btn btn-success' /></Link>
+				</div>
 				<h3 className="sub-header">TRAIL LIST</h3>
 				{trailList}
 			</div>	
