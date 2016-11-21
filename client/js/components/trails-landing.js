@@ -12,10 +12,10 @@ var TrailsLanding = React.createClass({
 					<div className="landing-container">
 						<div className="landing-text">
 							<p>Welcome!</p>
-							<p>Use the inputs above to search for trails.</p>
+							<p>Use the search above to find new trails.</p>
 							<p>Or if you're planning a trip, scout out the area ahead of time.</p>
 						</div>
-						<Link to={'/trails/favorites'}><input type='button' value='Click For Favorites' className='input-button btn btn-success landing-favorite' /></Link>
+						<Link to={'/trails/favorites'}><input type='button' value='Your Favorites' className='input-button btn btn-success landing-favorite' /></Link>
 					</div>
 				</div>
 			</div>

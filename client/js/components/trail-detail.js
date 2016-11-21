@@ -47,26 +47,19 @@ var TrailDetail = React.createClass ({
 		// Returns info for each items in the trail search
 		return (
 			<div className="container rounded trails">
-				<div className="trail-top row">
-					<div className="col-xs">
-						<h3 className="trail-title"><a href={this.props.url} target="_blank"> {this.props.name} </a></h3>
-					</div>
-					<div className="col-xs">
-						<Confirm 
-								onConfirm={this.addToFavorites} 
-								body="Are you sure you want to add this trail to your favorites?"
-								confirmText="Confirm Add"
-								confirmBSStyle="success"
-								title="Add to Favorites">
-							<button className="btn btn-outline-success btn-sm">Add to Favorites</button>
-						</Confirm>
-					</div>
-				</div>
+				<h3 className="trail-title"><a href={this.props.url} target="_blank"> {this.props.name} </a></h3>
 				<p><strong>Location:</strong> {this.props.city}, {this.props.state}</p>
 				<p><strong>Track Length:</strong> {this.props.length} miles</p>				
 				<p><strong>Description:</strong> {description}</p>
 				<p><strong>Directions:</strong> {directions}</p>
-				
+				<Confirm 
+						onConfirm={this.addToFavorites} 
+						body="Are you sure you want to add this trail to your favorites?"
+						confirmText="Confirm Add"
+						confirmBSStyle="success"
+						title="Add to Favorites">
+					<button className="btn btn-outline-success btn-sm">Add to Favorites</button>
+				</Confirm>
 			</div>
 		)
 	}

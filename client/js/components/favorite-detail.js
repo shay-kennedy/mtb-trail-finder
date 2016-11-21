@@ -46,25 +46,19 @@ var FavoriteDetail = React.createClass ({
 		directions = directions.split('&amp;').join('&');
 		// Returns info for each items in the favorite trail list
 		return (
-			<div className="container rounded trails">
-				<div className="trail-top row">
-					<div className="col-xs">
-						<h3 className="trail-title"><a href={this.props.url} target="_blank"> {this.props.name} </a></h3>
-					</div>
-					<div className="col-xs">
-						<Confirm 
-								onConfirm={this.removeFromFavorites} 
-								body="Are you sure you want to remove this trail from your favorites?"
-								confirmText="Confirm Remove"
-								title="Remove from Favorites">
-							<button className="btn btn-outline-danger btn-sm" >Remove from Favorites</button>
-						</Confirm>
-					</div>
-				</div>
+			<div className="rounded trails">
+				<h3 className="trail-title"><a href={this.props.url} target="_blank"> {this.props.name} </a></h3>
 				<p><strong>Location:</strong> {this.props.city}, {this.props.state}</p>
 				<p><strong>Track Length:</strong> {this.props.length} miles</p>				
 				<p><strong>Description:</strong> {description}</p>
-				<p><strong>Directions:</strong> {directions}</p>		
+				<p><strong>Directions:</strong> {directions}</p>
+				<Confirm 
+						onConfirm={this.removeFromFavorites} 
+						body="Are you sure you want to remove this trail from your favorites?"
+						confirmText="Confirm Remove"
+						title="Remove from Favorites">
+					<button className="btn btn-outline-danger btn-sm" >Remove from Favorites</button>
+				</Confirm>
 			</div>
 		)
 	}

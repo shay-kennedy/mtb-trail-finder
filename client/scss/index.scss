@@ -21,7 +21,7 @@ html {
 }
 
 body {
-	width: 85%;
+	width: 100%;
 	margin: 2em auto;
 	font-family: 'Raleway', sans-serif;
 	font-variant: small-caps;
@@ -67,6 +67,16 @@ input.form-control, select {
 	padding: 1em;
 	background-color: rgba(245, 245, 220, 0.8); /*beige*/
 	min-height: 100%;
+}
+
+.trails h3 {
+	text-align: center;
+	margin-bottom: .5em;
+}
+
+.trails button {
+	display: block;
+	margin: 0 auto;
 }
 
 .landing-container {
@@ -161,4 +171,11 @@ h3.trail-title {
 .trail-title {
 	font-size: 1.25em;
 	font-weight: bolder;
+}
+
+@media screen and (max-width: 900px) {
+	.container {
+		width: 100%;
+		padding: .5em;
+	}
 }
