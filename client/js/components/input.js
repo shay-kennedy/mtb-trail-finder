@@ -22,7 +22,7 @@ var Input = React.createClass({
 	},
 	render: function(){
 	return (
-		<form className="form-inline">
+		<form>
 		  <div className="form-group">
 		    <input type="text" className="form-control" placeholder="Enter City" ref="city" />
 		  </div>
