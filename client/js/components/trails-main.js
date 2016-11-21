@@ -9,7 +9,7 @@ var TrailsMain = React.createClass({
 	render: function(props) {
 		return (
 			<div className="container trails-page">
-				<div className="row title-bar">					
+				<div className="row trail-title">					
 					<h1 className="page-title"><Link to={'/trails'} >MTB Trail Finder</Link></h1>	
 				</div>
 				<div className="inputs">					

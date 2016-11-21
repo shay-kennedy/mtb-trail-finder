@@ -17,11 +17,6 @@ var Login = React.createClass({
 					<a href="/auth/google"><input type='button' value='Login' className='input-button btn btn-success login-button' /></a>
 					<p>Please login with your Google credentials so that we can provide you with a better experience!</p>
 				</form>
-				{/*<div className="container rounded demo-section">
-					<p>If you prefer to not use your own Google account, you can use the following Google login credentails for demo purposes.</p>
-					<p><strong>Username: </strong>fordevdemo@gmail.com</p>
-					<p><strong>Password: </strong>guest123</p>
-				</div>*/}
 			</div>
 		)
 	}
@@ -31,5 +26,3 @@ var Login = React.createClass({
 var Container = connect()(Login);
 
 module.exports = Container;
-
-// <a href="/#/trails"><input type='button' value='Demo Login' className='input-button btn btn-warning demo-login-button' /></a>
