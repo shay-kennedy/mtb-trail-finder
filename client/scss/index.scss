@@ -179,3 +179,15 @@ h3.trail-title {
 		padding: .5em;
 	}
 }
+
+@media screen and (max-width: 450px) {
+	.page-title {
+		margin: 0 0 1.5em 0;
+	}
+	body {
+		margin: 1em 0;
+	}
+	.landing-container {
+		margin: 2em 0 1em 0;
+	}
+}
