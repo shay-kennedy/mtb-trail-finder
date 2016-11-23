@@ -95,23 +95,3 @@ var Input = React.createClass({
 var Container = connect()(Input);
 
 module.exports = Container;
-
-// <div className="row input">
-//   <div>
-//     <div className="input-group">
-//       <input type="text" className="form-control" placeholder="Enter City, State" ref="location" />
-//       <select id="dropdown" ref="state">
-//       	<option value="">Select State</option>
-//       	<option value="Arizona">AZ</option>
-//       	<option value="Ohio">OH</option>
-//       </select>
-//       <span className="input-group-btn">
-//         <button onClick={this.onSearch} className="btn btn-success btn-secondary" type="button" >
-// 					<Link to={'/trails/list'} className="search" >Search</Link>
-//				 <Dialog ref="dialog" />
-// 				</button>
-//       </span>
-//     </div>
-//   </div>
-// </div>
-

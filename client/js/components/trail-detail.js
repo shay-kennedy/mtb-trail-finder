@@ -65,8 +65,6 @@ var TrailDetail = React.createClass ({
 	}
 });
 
-// <p dangerouslySetInnerHTML={{__html: description}} />					
-// <p dangerouslySetInnerHTML={{__html: directions}} />
 
 var mapStateToProps = function(state, props) {
 	return {
