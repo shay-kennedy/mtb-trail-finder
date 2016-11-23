@@ -7,7 +7,6 @@ import Login from '../../client/js/components/login-main.js';
 const renderer = TestUtils.createRenderer();
 renderer.render(<Login.WrappedComponent />);
 const result = renderer.getRenderOutput();
-console.log("RESULTS", result.props.children[1]);
 
 describe('<Login />', () => {
   it('Renders a div', () => {   
