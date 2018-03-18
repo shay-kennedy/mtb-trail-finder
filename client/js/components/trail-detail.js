@@ -52,14 +52,14 @@ var TrailDetail = React.createClass ({
 				<p><strong>Track Length:</strong> {this.props.length} miles</p>				
 				<p><strong>Description:</strong> {description}</p>
 				<p><strong>Directions:</strong> {directions}</p>
-				<Confirm 
+				{this.props.userId && <Confirm 
 						onConfirm={this.addToFavorites} 
 						body="Are you sure you want to add this trail to your favorites?"
 						confirmText="Confirm Add"
 						confirmBSStyle="success"
 						title="Add to Favorites">
 					<button className="btn btn-outline-success btn-sm">Add to Favorites</button>
-				</Confirm>
+				</Confirm>}
 			</div>
 		)
 	}

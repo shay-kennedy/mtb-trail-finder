@@ -7,9 +7,6 @@ var Link = require('react-router').Link;
 
 
 var TrailList = React.createClass({
-	componentDidMount: function() {
-		this.props.dispatch(actions.fetchUser());
-	},
 	render: function(props) {
 		// Maps through array of search results passing in props to TrailDetail componenet
 		var trailList = this.props.trails.map(function(trail) {
@@ -31,7 +28,7 @@ var TrailList = React.createClass({
 		return (
 			<div className="display">
 				<div className="favorites-button">
-					<Link to={'/trails/favorites'}><input type='button' value='Favorites' className='input-button btn btn-success' /></Link>
+					{this.props.userId && <Link to={'/trails/favorites'}><input type='button' value='Favorites' className='input-button btn btn-success' /></Link>}
 				</div>
 				<h3 className="sub-header">TRAIL LIST</h3>
 				{trailList}

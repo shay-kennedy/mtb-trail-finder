@@ -6,10 +6,6 @@ var FavoriteDetail = require('./favorite-detail');
 
 
 var TrailFavorites = React.createClass({
-	// Dispatches request for user info, including favorite trail list
-	componentDidMount: function() {
-		this.props.dispatch(actions.fetchUser());
-	},
 	render: function(props) {
 		// Maps through array of favorite trail passing in props to FavoriteDetail componenet
 		var favoriteList = this.props.favorites.map(function(favorite) {
