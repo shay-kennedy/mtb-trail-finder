@@ -18,6 +18,13 @@ var fetchUserError = function(error) {
   };
 };
 
+var LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS'
+var logoutUserSuccess = function() {
+  return {
+    type: LOGOUT_USER_SUCCESS
+  }
+}
+
 var GET_TRAILS_SUCCESS = 'GET_TRAILS_SUCCESS';
 var getTrailsSuccess = function(trails) {
   return {
@@ -60,6 +67,31 @@ var fetchUser = function() {
         fetchUserError(error)
       );
     });
+  }
+};
+
+var logoutUser = function () {
+  return function (dispatch) {
+    var token = Cookies.get('accessToken');
+    var headers = new Headers({
+      Authorization: 'bearer ' + token
+    });
+    var url = '/logout';
+    return fetch(url, { headers: headers }).then(function (response) {
+      if (response.status < 200 || response.status >= 300) {
+        var error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+      return response;
+    })
+      .then(function () {
+        Cookies.remove('accessToken')
+        window.location.replace("/")
+        return dispatch(
+          logoutUserSuccess()
+        );
+      })
   }
 };
 
@@ -174,6 +206,9 @@ exports.fetchUserSuccess = fetchUserSuccess;
 exports.fetchUserError = fetchUserError;
 exports.FETCH_USER_SUCCESS = FETCH_USER_SUCCESS;
 exports.FETCH_USER_ERROR = FETCH_USER_ERROR;
+exports.logoutUser = logoutUser;
+exports.LOGOUT_USER_SUCCESS = LOGOUT_USER_SUCCESS;
+exports.logoutUserSuccess = logoutUserSuccess;
 exports.getTrails = getTrails;
 exports.getTrailsSuccess = getTrailsSuccess;
 exports.getTrailsError = getTrailsError;

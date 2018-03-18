@@ -36,6 +36,9 @@ var reducer = function(state, action) {
 		case actions.GET_TRAILS_ERROR:
 			// console.log('GET_TRAILS_ERROR');
 			return state;
+
+		case actions.LOGOUT_USER_SUCCESS:
+			return initialState
 	
 	}
 	return state;	

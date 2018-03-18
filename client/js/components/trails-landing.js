@@ -1,6 +1,7 @@
 var React = require("react");
 var Input = require('./input');
 var Link = require('react-router').Link;
+var connect = require('react-redux').connect;
 
 
 var TrailsLanding = React.createClass({
@@ -15,7 +16,10 @@ var TrailsLanding = React.createClass({
 							<p>Use the search above to find new trails.</p>
 							<p>Or if you're planning a trip, scout out the area ahead of time.</p>
 						</div>
-						<Link to={'/trails/favorites'}><input type='button' value='Your Favorites' className='input-button btn btn-success landing-favorite' /></Link>
+            {this.props.userId 
+              ? <Link to={'/trails/favorites'}><input type='button' value='Your Favorites' className='input-button btn btn-success landing-favorite' /></Link>
+              : <a href="/auth/google">Login for Favorites</a>
+            }
 					</div>
 				</div>
 			</div>
@@ -23,5 +27,13 @@ var TrailsLanding = React.createClass({
 	}
 });
 
+
+var mapStateToProps = function (state, props) {
+	return {
+		userId: state.googleID,
+	}
+}
+
+var TrailsLanding = connect(mapStateToProps)(TrailsLanding);
 
 module.exports = TrailsLanding;
