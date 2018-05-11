@@ -1,55 +1,51 @@
-var webpack = require('webpack');
-var path = require('path');
+import webpack from 'webpack'
+import path from 'path'
+import packageData from './package.json'
 
 
-var packageData = require('./package.json');
+const isProduction = process.env.NODE_ENV === 'production'
 
-var isProduction = process.env.NODE_ENV === 'production';
-
-var filename;
-var plugins;
-var outputPath;
-
-if (isProduction) {
-    outputPath = 'build/production/client/js';
-    filename = `${packageData.name}.${packageData.version}.min.js`;
-    plugins = [
-        // new webpack.optimize.UglifyJsPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': '"production"'
-            }
-        })
-    ];
-}
-else {
-    outputPath = 'build/dev/client/js';
-    filename = `${packageData.name}.${packageData.version}.js`;
-    plugins = [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': '"development"'
-            }
-        })
-    ];
+const base = {
+  entry: path.resolve(__dirname, packageData['main:client']),
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+      },
+    ]
+  }
 }
 
-
-module.exports = {
-    entry: path.resolve(__dirname, packageData['main:client']),
-    output: {
-        path: path.resolve(__dirname, outputPath),
-        filename: filename,
-    },
-    devtool: isProduction ? 'source-map' : 'inline-source-map',
-    module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /(node_modules)/,
-          loader: 'babel-loader',
-        },
-      ]
-    },
-    plugins: plugins
+const productionConfig = {
+  output: {
+    path: path.resolve(__dirname, 'build/production/client/js'),
+    filename: `${packageData.name}.${packageData.version}.min.js`,
+  },
+  devtool: 'source-map',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+      }
+    })
+  ],
 }
+
+const developmentConfig = {
+  output: {
+    path: path.resolve(__dirname, 'build/dev/client/js'),
+    filename: `${packageData.name}.${packageData.version}.js`,
+  },
+  devtool: 'source-map',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development'),
+      }
+    })
+  ],
+}
+
+export default Object.assign({}, base, isProduction === true ? productionConfig : developmentConfig)
