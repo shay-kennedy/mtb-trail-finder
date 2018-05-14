@@ -1,15 +1,14 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React, { Component } from 'react'
 
 
-// Contains all children components used for routes
-var Main = function(props) {
-	return (		
-		<div className="container">
-			{props.children}
-		</div>
-	)
+// TODO: Make this a functional component
+
+export default class Main extends Component {
+	render() {
+		return (
+			<div className="container">
+				{this.props.children}
+			</div>
+		)
+	}
 }
-
-
-module.exports = Main;
