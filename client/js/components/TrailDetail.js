@@ -6,6 +6,10 @@ import Confirm from 'react-confirm-bootstrap'
 
 
 export class TrailDetail extends Component {
+  constructor(props) {
+    super(props)
+    this.addToFavorites = this.addToFavorites.bind(this)
+  }
   addToFavorites() {
     this.props.dispatch(actions.addFavorite(this.props))
   }

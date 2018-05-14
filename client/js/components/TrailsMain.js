@@ -7,6 +7,10 @@ import { Input } from '../components'
 
 
 export class TrailsMain extends Component {
+  constructor(props) {
+    super(props)
+    this.handleLogout = this.handleLogout.bind(this)
+  }
   componentDidMount() {
     var token = Cookies.get('accessToken');
     if (token) {

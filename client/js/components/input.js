@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import actions from '../redux/actions'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Dialog from 'react-bootstrap-dialog'
 Dialog.setOptions({primaryClassName: 'btn-success'})
@@ -7,8 +8,12 @@ Dialog.setOptions({primaryClassName: 'btn-success'})
 
 // TODO: Make this a functional component
 
-export default class Input extends Component {
-	onSearch(e) {
+export class Input extends Component {
+  constructor(props) {
+    super(props)
+    this.onSearch = this.onSearch.bind(this)
+  }
+  onSearch(e) {
     event.preventDefault()
     var state = this.refs.state.value
     var city = this.refs.city.value
@@ -91,3 +96,6 @@ export default class Input extends Component {
     )
   }
 }
+
+
+export default connect()(Input)

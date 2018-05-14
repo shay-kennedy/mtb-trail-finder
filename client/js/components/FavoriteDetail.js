@@ -5,7 +5,11 @@ import { TrailsMain } from '../components'
 import Confirm from 'react-confirm-bootstrap'
 
 export class FavoriteDetail extends Component {
-	removeFromFavorites() {
+  constructor(props) {
+    super(props)
+    this.removeFromFavorites = this.removeFromFavorites.bind(this)
+  }
+  removeFromFavorites() {
 		this.props.dispatch(actions.removeFavorite(this.props))
 	}
 	render() {
