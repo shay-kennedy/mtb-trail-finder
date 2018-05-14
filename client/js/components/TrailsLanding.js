@@ -1,12 +1,11 @@
-var React = require("react");
-var Input = require('./input');
-var Link = require('react-router').Link;
-var connect = require('react-redux').connect;
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+import { Input } from '../components'
 
 
-var TrailsLanding = React.createClass({
-	// Contains search bar, favorite button and logout button
-	render: function(props) {
+export class TrailsLanding extends Component {
+	render() {
 		return (
 			<div className="trails-page">
 				<div className="inputs">					
@@ -23,17 +22,15 @@ var TrailsLanding = React.createClass({
 					</div>
 				</div>
 			</div>
-		)
-	}
-});
+    )
+  }
+}
 
 
-var mapStateToProps = function (state, props) {
+function mapStateToProps(state, props) {
 	return {
 		userId: state.googleID,
 	}
 }
 
-var TrailsLanding = connect(mapStateToProps)(TrailsLanding);
-
-module.exports = TrailsLanding;
+export default connect(mapStateToProps)(TrailsLanding)
