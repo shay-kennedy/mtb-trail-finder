@@ -7,6 +7,7 @@ import { Input, TrailDetail } from '../components'
 
 export class TrailList extends Component {
   render() {
+    console.log('props', this.props)
     var trailList = this.props.trails.map(function (trail) {
       return (
         <TrailDetail
@@ -35,11 +36,11 @@ export class TrailList extends Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps({reducer}) {
   return {
-    trails: state.trails,
-    userId: state.googleID,
-    favorites: state.favorites
+    trails: reducer.trails,
+    userId: reducer.googleID,
+    favorites: reducer.favorites
   }
 }
 

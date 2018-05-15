@@ -67,10 +67,10 @@ export class TrailDetail extends Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps({reducer}) {
   return {
-    userId: state.googleID,
-    favorites: state.favorites
+    userId: reducer.googleID,
+    favorites: reducer.favorites
   }
 }
 

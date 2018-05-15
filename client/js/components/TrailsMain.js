@@ -45,9 +45,9 @@ export class TrailsMain extends Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps({reducer}) {
 	return {
-		userId: state.googleID,
+		userId: reducer.googleID,
 	}
 }
 
