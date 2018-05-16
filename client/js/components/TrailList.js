@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import actions from '../redux/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Input, TrailDetail } from '../components'
@@ -7,7 +6,7 @@ import { Input, TrailDetail } from '../components'
 
 export class TrailList extends Component {
   render() {
-    var trailList = this.props.trails.map(function (trail) {
+    var trailList = this.props.trails.map(trail => {
       return (
         <TrailDetail
           key={trail.unique_id}
@@ -35,11 +34,10 @@ export class TrailList extends Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps({ user, trails }) {
   return {
-    trails: state.trails,
-    userId: state.googleID,
-    favorites: state.favorites
+    trails: trails.trails,
+    userId: user.googleID,
   }
 }
 

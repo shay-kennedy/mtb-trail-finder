@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import actions from '../redux/actions'
 import { connect } from 'react-redux'
 import { TrailsMain } from '../components'
 import Confirm from 'react-confirm-bootstrap'
+import { addFavorite } from '../redux/user'
 
 
 export class TrailDetail extends Component {
@@ -11,7 +11,7 @@ export class TrailDetail extends Component {
     this.addToFavorites = this.addToFavorites.bind(this)
   }
   addToFavorites() {
-    this.props.dispatch(actions.addFavorite(this.props))
+    this.props.addFavorite(this.props)
   }
   render() {
     var description = this.props.description;
@@ -67,11 +67,17 @@ export class TrailDetail extends Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps({ user }) {
   return {
-    userId: state.googleID,
-    favorites: state.favorites
+    userId: user.googleID,
+    favorites: user.favorites
   }
 }
 
-export default connect(mapStateToProps)(TrailDetail)
+function mapDispatchToProps(dispatch) {
+  return {
+    addFavorite: (props) => { dispatch(addFavorite(props)) },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrailDetail)

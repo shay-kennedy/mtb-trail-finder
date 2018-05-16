@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import actions from '../redux/actions'
 import { connect } from 'react-redux'
 import { Input, FavoriteDetail } from '../components'
 
@@ -31,10 +30,9 @@ export class TrailFavorites extends Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps({ user }) {
   return {
-    userId: state.googleID,
-    favorites: state.favorites
+    favorites: user.favorites,
   }
 }
 

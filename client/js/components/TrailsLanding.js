@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { Input } from '../components'
 
 
 export class TrailsLanding extends Component {
@@ -27,9 +26,9 @@ export class TrailsLanding extends Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps({ user }) {
 	return {
-		userId: state.googleID,
+		userId: user.googleID,
 	}
 }
 

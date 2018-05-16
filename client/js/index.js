@@ -3,8 +3,33 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { hashHistory } from 'react-router'
 import getRoutes from './config/routes'
-import store from './redux/store'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import { routerReducer, syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
+import * as reducers from './redux'
 
 console.log(`Client running in ${process.env.NODE_ENV} mode`)
 
-ReactDOM.render(getRoutes(hashHistory, store), document.getElementById('app'))
+
+const allReducers = {
+  ...reducers,
+  routing: routerReducer,
+}
+
+const store = createStore(
+  combineReducers(allReducers),
+  compose(
+    applyMiddleware(thunk, routerMiddleware(hashHistory)),
+    window.devToolsExtension ? window.devToolsExtension() : (f) => f
+  )
+)
+
+const history = syncHistoryWithStore(hashHistory, store)
+
+ReactDOM.render(
+  <Provider store={store}>
+    {getRoutes(history)}
+  </Provider>,
+  document.getElementById('app')
+)
