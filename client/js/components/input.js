@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import actions from '../redux/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Dialog from 'react-bootstrap-dialog'
 Dialog.setOptions({primaryClassName: 'btn-success'})
+import { fetchAndHandleTrails } from '../redux/trails'
 
 
 // TODO: Make this a functional component
@@ -21,7 +21,7 @@ export class Input extends Component {
       this.refs.dialog.showAlert('Please enter a city and state.')
       return
     }
-    this.props.dispatch(actions.getTrails(city, state))
+    this.props.fetchTrails(city, state)
     this.refs.city.value = ''
     this.refs.state.value = ''	
   }
@@ -97,5 +97,10 @@ export class Input extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchTrails: (city, state) => { dispatch(fetchAndHandleTrails(city, state)) },
+  }
+}
 
-export default connect()(Input)
+export default connect(null, mapDispatchToProps)(Input)

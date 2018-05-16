@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import actions from '../redux/actions'
 import { connect } from 'react-redux'
 import { TrailsMain } from '../components'
 import Confirm from 'react-confirm-bootstrap'
+import { removeFavorite } from '../redux/user'
 
 export class FavoriteDetail extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export class FavoriteDetail extends Component {
     this.removeFromFavorites = this.removeFromFavorites.bind(this)
   }
   removeFromFavorites() {
-		this.props.dispatch(actions.removeFavorite(this.props))
+		this.props.removeFavorite(this.props)
 	}
 	render() {
     var description = this.props.description;
@@ -65,11 +65,17 @@ export class FavoriteDetail extends Component {
 }
 
 
-function mapStateToProps({ reducer }) {
+function mapStateToProps({ user }) {
   return {
-    userId: reducer.googleID,
-    favorites: reducer.favorites
+    userId: user.googleID,
+    favorites: user.favorites
   }
 }
 
-export default connect(mapStateToProps)(FavoriteDetail)
+function mapDispatchToProps(dispatch) {
+  return {
+    removeFavorite: (props) => { dispatch(removeFavorite(props)) },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteDetail)

@@ -27,9 +27,9 @@ export class TrailsLanding extends Component {
 }
 
 
-function mapStateToProps({reducer}) {
+function mapStateToProps({ user }) {
 	return {
-		userId: reducer.googleID,
+		userId: user.googleID,
 	}
 }
 

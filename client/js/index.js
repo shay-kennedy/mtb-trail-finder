@@ -7,13 +7,13 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import { routerReducer, syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
-import reducer from './redux/reducers'
+import * as reducers from './redux'
 
 console.log(`Client running in ${process.env.NODE_ENV} mode`)
 
 
 const allReducers = {
-  reducer,
+  ...reducers,
   routing: routerReducer,
 }
 
@@ -29,7 +29,7 @@ const history = syncHistoryWithStore(hashHistory, store)
 
 ReactDOM.render(
   <Provider store={store}>
-    {getRoutes(history, store)}
+    {getRoutes(history)}
   </Provider>,
   document.getElementById('app')
 )

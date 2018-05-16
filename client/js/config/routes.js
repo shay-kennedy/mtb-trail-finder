@@ -10,7 +10,7 @@ import {
 } from '../components'
 
 
-export default function getRoutes(history, store) {
+export default function getRoutes(history) {
   return (
     <Router history={history} >
       <Route path="/" component={Main} >

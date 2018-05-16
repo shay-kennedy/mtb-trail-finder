@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import actions from '../redux/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Cookies from 'js-cookie'
 import { Input } from '../components'
+import { fetchAndHandleUser, logout } from '../redux/user'
 
 
 export class TrailsMain extends Component {
@@ -14,11 +14,11 @@ export class TrailsMain extends Component {
   componentDidMount() {
     var token = Cookies.get('accessToken');
     if (token) {
-      this.props.dispatch(actions.fetchUser());
+      this.props.fetchUser()
     }
   }
   handleLogout() {
-    this.props.dispatch(actions.logoutUser())
+    this.props.logoutUser()
   }
   render() {
     return (
@@ -45,10 +45,17 @@ export class TrailsMain extends Component {
 }
 
 
-function mapStateToProps({reducer}) {
+function mapStateToProps({ user }) {
 	return {
-		userId: reducer.googleID,
+		userId: user.googleID,
 	}
 }
 
-export default connect(mapStateToProps)(TrailsMain);
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchUser: () => { dispatch(fetchAndHandleUser()) },
+    logoutUser: () => { dispatch(logout()) },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrailsMain);

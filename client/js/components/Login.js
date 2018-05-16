@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import actions from '../redux/actions'
 import { Link } from 'react-router'
 
 // TODO: Make this a functional component
