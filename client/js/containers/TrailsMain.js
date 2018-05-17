@@ -21,6 +21,7 @@ export class TrailsMain extends Component {
     this.props.logoutUser()
   }
   render() {
+    const { children, userId } = this.props
     return (
       <div>
         <div className="container trails-page">
@@ -33,10 +34,10 @@ export class TrailsMain extends Component {
             </div>
           </div>
           <div className="display">
-            {this.props.children}
+            {children}
           </div>
         </div>
-        {this.props.userId && <div className="logout">
+        {userId && <div className="logout">
           <button onClick={this.handleLogout} className='input-button btn btn-warning'>Logout</button>
         </div>}
       </div>

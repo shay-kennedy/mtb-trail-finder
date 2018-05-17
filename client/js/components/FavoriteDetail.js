@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Confirm from 'react-confirm-bootstrap'
-import { TrailsMain } from '../components'
 import { removeFavorite } from '../redux/user'
 import formatContent from '../helpers/formatContent'
 

@@ -5,7 +5,6 @@ import Dialog from 'react-bootstrap-dialog'
 Dialog.setOptions({primaryClassName: 'btn-success'})
 import { fetchAndHandleTrails } from '../redux/trails'
 
-
 // TODO: Make this a functional component
 
 export class Input extends Component {

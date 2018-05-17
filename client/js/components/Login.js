@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 
 // TODO: Make this a functional component
 
+
 export default class Login extends Component {
 	render() {
 		return (
