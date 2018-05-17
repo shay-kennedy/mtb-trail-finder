@@ -1,13 +1,15 @@
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
 import {
-  Main,
-  TrailsMain,
   TrailsLanding,
   Login,
-  TrailList,
-  TrailFavorites,
 } from '../components'
+import {
+  Main,
+  TrailFavorites,
+  TrailList,
+  TrailsMain,
+} from '../containers'
 
 
 export default function getRoutes(history) {

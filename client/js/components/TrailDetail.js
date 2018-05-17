@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { TrailsMain } from '../components'
 import Confirm from 'react-confirm-bootstrap'
 import { addFavorite } from '../redux/user'
+import formatContent from '../helpers/formatContent'
 
 
 export class TrailDetail extends Component {
@@ -14,46 +14,24 @@ export class TrailDetail extends Component {
     this.props.addFavorite(this.props)
   }
   render() {
-    var description = this.props.description;
-    description = description.split('&lt;b&gt;').join(' ');
-    description = description.split('&lt;/b&gt;').join(' ');
-    description = description.split('&lt;p&gt;').join(' ');
-    description = description.split('&lt;/p&gt;').join(' ');
-    description = description.split('&lt;u&gt;').join(' ');
-    description = description.split('&lt;/u&gt;').join(' ');
-    description = description.split('&lt;li&gt;').join(' ');
-    description = description.split('&lt;/li&gt;').join(' ');
-    description = description.split('&lt;ul&gt;').join(' ');
-    description = description.split('&lt;/ul&gt;').join(' ');
-    description = description.split('&lt;br/&gt;').join(' ');
-    description = description.split('&lt;br /&gt;').join(' ');
-    description = description.split('<br />').join(' ');
-    description = description.split('&quot;').join('"');
-    description = description.split('&amp;').join('&');
-    var directions = this.props.directions;
-    directions = directions.split('&lt;b&gt;').join(' ');
-    directions = directions.split('&lt;/b&gt;').join(' ');
-    directions = directions.split('&lt;p&gt;').join(' ');
-    directions = directions.split('&lt;/p&gt;').join(' ');
-    directions = directions.split('&lt;u&gt;').join(' ');
-    directions = directions.split('&lt;/u&gt;').join(' ');
-    directions = directions.split('&lt;li&gt;').join(' ');
-    directions = directions.split('&lt;/li&gt;').join(' ');
-    directions = directions.split('&lt;ul&gt;').join(' ');
-    directions = directions.split('&lt;/ul&gt;').join(' ');
-    directions = directions.split('&lt;br/&gt;').join(' ');
-    directions = directions.split('&lt;br /&gt;').join(' ');
-    directions = directions.split('<br />').join(' ');
-    directions = directions.split('&quot;').join('"');
-    directions = directions.split('&amp;').join('&');
+    const { 
+      url,
+      name,
+      city,
+      state,
+      length,
+      description,
+      directions,
+      userId,
+    } = this.props
     return (
       <div className="container rounded trails">
-        <h3 className="trail-title"><a href={this.props.url} target="_blank"> {this.props.name} </a></h3>
-        <p><strong>Location:</strong> {this.props.city}, {this.props.state}</p>
-        <p><strong>Track Length:</strong> {this.props.length} miles</p>
-        <p><strong>Description:</strong> {description}</p>
-        <p><strong>Directions:</strong> {directions}</p>
-        {this.props.userId && <Confirm
+        <h3 className="trail-title"><a href={url} target="_blank"> {name} </a></h3>
+        <p><strong>Location:</strong> {city}, {state}</p>
+        <p><strong>Track Length:</strong> {length} miles</p>
+        <p><strong>Description:</strong> {formatContent(description)}</p>
+        <p><strong>Directions:</strong> {formatContent(directions)}</p>
+        {userId && <Confirm
           onConfirm={this.addToFavorites}
           body="Are you sure you want to add this trail to your favorites?"
           confirmText="Confirm Add"
