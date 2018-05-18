@@ -1,4 +1,3 @@
-export FavoriteDetail from './FavoriteDetail'
 export FormField from './FormField'
 export Login from './Login'
 export TrailDetail from './TrailDetail'

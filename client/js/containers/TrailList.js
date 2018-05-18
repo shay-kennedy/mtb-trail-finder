@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Loader from 'react-loader-spinner'
-import { Input, TrailDetail } from '../components'
+import { TrailDetail } from '../components'
 
 
 const renderTrails = (trails) => {
@@ -39,7 +39,11 @@ export class TrailList extends Component {
     return (
       <div className="display">
         <div className="favorites-button">
-          {userId && <Link to={'/trails/favorites'}><input type='button' value='Favorites' className='input-button btn btn-success' /></Link>}
+          {userId && 
+            <Link to={'/trails/favorites'}>
+              <input type='button' value='Favorites' className='input-button btn btn-success' />
+            </Link>
+          }
         </div>
         <h3 className="sub-header">TRAIL LIST</h3>
         {isFetching

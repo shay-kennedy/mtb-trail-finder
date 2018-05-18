@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Cookies from 'js-cookie'
-import { Input } from '../components'
 import { fetchAndHandleUser, logout } from '../redux/user'
 import { TrailLocationForm } from '../forms'
 

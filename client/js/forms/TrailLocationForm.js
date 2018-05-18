@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
 import { fetchAndHandleTrails } from '../redux/trails'
 import { FormField } from '../components/FormField'
 import { STATE_LIST } from '../helpers/constants'
@@ -9,7 +9,7 @@ function submit() {
   return function(values, dispatch) {
     const { city, state } = values
     dispatch(fetchAndHandleTrails(city, state))
-
+    dispatch(reset('trail_location_form'))
     if (window.location.hash != '#/trails/list') {
       window.location = '#/trails/list'
     }

@@ -38,11 +38,12 @@ export function FormField(props) {
     disabled,
     fieldType,
     options,
-    meta: { touched, error }
+    meta: { touched, error, visited, active },
+    meta,
   } = props
   return (
     <div className={`form-group ${fieldType == 'select' ? 'select' : ''}`}>
-      {touched && error && <span style={{color: 'red', fontWeight: 'bold'}}>{error}</span>}
+      {touched && error && visited && !active && <span style={{color: 'red', fontWeight: 'bold'}}>{error}</span>}
       {getField(props)}
     </div>
   )
