@@ -43,7 +43,7 @@ export function FormField(props) {
   } = props
   return (
     <div className={`form-group ${fieldType == 'select' ? 'select' : ''}`}>
-      {touched && error && visited && !active && <span style={{color: 'red', fontWeight: 'bold'}}>{error}</span>}
+      {touched && error && visited && !active && <span className={'form-error'}>{error}</span>}
       {getField(props)}
     </div>
   )

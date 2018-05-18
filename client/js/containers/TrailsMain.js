@@ -7,21 +7,14 @@ import { TrailLocationForm } from '../forms'
 
 
 export class TrailsMain extends Component {
-  constructor(props) {
-    super(props)
-    this.handleLogout = this.handleLogout.bind(this)
-  }
   componentDidMount() {
-    var token = Cookies.get('accessToken');
+    const token = Cookies.get('accessToken')
     if (token) {
       this.props.fetchUser()
     }
   }
-  handleLogout() {
-    this.props.logoutUser()
-  }
   render() {
-    const { children, userId } = this.props
+    const { children, userId, logoutUser } = this.props
     return (
       <div>
         <div className="container trails-page">
@@ -38,7 +31,7 @@ export class TrailsMain extends Component {
           </div>
         </div>
         {userId && <div className="logout">
-          <button onClick={this.handleLogout} className='input-button btn btn-warning'>Logout</button>
+          <button onClick={() => logoutUser()} className='input-button btn btn-warning'>Logout</button>
         </div>}
       </div>
     )

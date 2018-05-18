@@ -128,7 +128,6 @@ input.form-control, select {
 
 h3.trail-title {
 	font-family: 'Rock Salt', cursive;
-	text-decoration: underline;
 }
 
 .trail-title a:hover {
@@ -185,6 +184,11 @@ h3.trail-title {
 .loader {
 	text-align: center;
 	margin-top: 3rem;
+}
+
+.form-error {
+	color: red;
+	font-weight: bold;
 }
 
 @media screen and (max-width: 900px) {

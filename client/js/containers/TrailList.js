@@ -33,6 +33,14 @@ const renderTrails = (trails) => {
   }
 }
 
+const renderLoader = () => {
+  return (
+    <div className="loader">
+      <Loader type="Puff" color="#5cb85c" />
+    </div>
+  )
+}
+
 export class TrailList extends Component {
   render() {
     const { trails, isFetching, userId } = this.props
@@ -45,9 +53,9 @@ export class TrailList extends Component {
             </Link>
           }
         </div>
-        <h3 className="sub-header">TRAIL LIST</h3>
+        <h3 className="sub-header">** TRAIL LIST **</h3>
         {isFetching
-          ? <div className="loader"><Loader type="Puff" color="#5cb85c" /></div>
+          ? renderLoader()
           : renderTrails(trails)
         }
       </div>

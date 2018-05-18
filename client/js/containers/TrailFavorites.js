@@ -5,7 +5,7 @@ import { FavoriteDetail, TrailDetail } from '../components'
 
 export class TrailFavorites extends Component {
   render() {
-    var favoriteList = this.props.favorites.map(function (favorite) {
+    const favoriteList = this.props.favorites.map(favorite => {
       return (
         <TrailDetail
           key={favorite.trail_id}
@@ -20,10 +20,10 @@ export class TrailFavorites extends Component {
           favoritesList={true}
         />
       )
-    });
+    })
     return (
       <div className="display">
-        <h3 className="sub-header">FAVORITE TRAILS</h3>
+        <h3 className="sub-header">** FAVORITE TRAILS **</h3>
         {favoriteList}
       </div>
     )
