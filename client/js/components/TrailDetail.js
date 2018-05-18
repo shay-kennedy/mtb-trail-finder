@@ -1,18 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Confirm from 'react-confirm-bootstrap'
-import { addFavorite } from '../redux/user'
+import { addFavorite, removeFavorite } from '../redux/user'
 import formatContent from '../helpers/formatContent'
 
 
+const renderConfirm = (props) => {
+  if (props.favoritesList) {
+    return (
+      <Confirm
+        onConfirm={() => props.removeFavorite(props)}
+        body="Are you sure you want to remove this trail from your favorites?"
+        confirmText="Confirm Remove"
+        title="Remove from Favorites">
+        <button className="btn btn-outline-danger btn-sm" >Remove from Favorites</button>
+      </Confirm>
+    )
+  } else {
+    return (
+      <Confirm
+        onConfirm={() => props.addFavorite(props)}
+        body="Are you sure you want to add this trail to your favorites?"
+        confirmText="Confirm Add"
+        confirmBSStyle="success"
+        title="Add to Favorites">
+        <button className="btn btn-outline-success btn-sm">Add to Favorites</button>
+      </Confirm>
+    )
+  }
+}
+
 export class TrailDetail extends Component {
-  constructor(props) {
-    super(props)
-    this.addToFavorites = this.addToFavorites.bind(this)
-  }
-  addToFavorites() {
-    this.props.addFavorite(this.props)
-  }
   render() {
     const { 
       url,
@@ -23,6 +41,9 @@ export class TrailDetail extends Component {
       description,
       directions,
       userId,
+      addFavorite,
+      removeFavorite,
+      favoritesList,
     } = this.props
     return (
       <div className="container rounded trails">
@@ -31,14 +52,7 @@ export class TrailDetail extends Component {
         <p><strong>Track Length:</strong> {length} miles</p>
         <p><strong>Description:</strong> {formatContent(description)}</p>
         <p><strong>Directions:</strong> {formatContent(directions)}</p>
-        {userId && <Confirm
-          onConfirm={this.addToFavorites}
-          body="Are you sure you want to add this trail to your favorites?"
-          confirmText="Confirm Add"
-          confirmBSStyle="success"
-          title="Add to Favorites">
-          <button className="btn btn-outline-success btn-sm">Add to Favorites</button>
-        </Confirm>}
+        {userId && renderConfirm(this.props)}
       </div>
     )
   }
@@ -55,6 +69,7 @@ function mapStateToProps({ user }) {
 function mapDispatchToProps(dispatch) {
   return {
     addFavorite: (props) => { dispatch(addFavorite(props)) },
+    removeFavorite: (props) => { dispatch(removeFavorite(props)) },
   }
 }
 
