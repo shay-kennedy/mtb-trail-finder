@@ -52,6 +52,7 @@ export default function trails(state = initialState, action) {
     case FETCHING_TRAILS_SUCCESS:
       return {
         ...state,
+        isFetching: false,
         trails: action.trails,
       }
 		case FETCHING_TRAILS_FAILURE:

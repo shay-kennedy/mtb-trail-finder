@@ -31,7 +31,6 @@ export class TrailsMain extends Component {
           </div>
           <div className="inputs">
             <div className="input-field">
-              {/* <Input /> */}
               <TrailLocationForm />
             </div>
           </div>
