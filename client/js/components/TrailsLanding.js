@@ -16,7 +16,7 @@ export class TrailsLanding extends Component {
 						</div>
             {this.props.userId 
               ? <Link to={'/trails/favorites'}><input type='button' value='Your Favorites' className='input-button btn btn-success landing-favorite' /></Link>
-              : <a href="/auth/google">Login for Favorites</a>
+							: <a href="/auth/google" target="_self">Login for Favorites</a>
             }
 					</div>
 				</div>
