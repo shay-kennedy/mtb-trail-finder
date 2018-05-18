@@ -8,12 +8,14 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import { routerReducer, syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
 import * as reducers from './redux'
+import { reducer as form } from 'redux-form'
 
 console.log(`Client running in ${process.env.NODE_ENV} mode`)
 
 
 const allReducers = {
   ...reducers,
+  form,
   routing: routerReducer,
 }
 

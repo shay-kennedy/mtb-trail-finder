@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import Cookies from 'js-cookie'
 import { Input } from '../components'
 import { fetchAndHandleUser, logout } from '../redux/user'
+import { TrailLocationForm } from '../forms'
 
 
 export class TrailsMain extends Component {
@@ -30,7 +31,8 @@ export class TrailsMain extends Component {
           </div>
           <div className="inputs">
             <div className="input-field">
-              <Input />
+              {/* <Input /> */}
+              <TrailLocationForm />
             </div>
           </div>
           <div className="display">
@@ -59,4 +61,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrailsMain);
+export default connect(mapStateToProps, mapDispatchToProps)(TrailsMain)

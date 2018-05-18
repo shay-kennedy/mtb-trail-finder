@@ -103,7 +103,6 @@
     "passport-google-oauth20": "=1.0.0",
     "passport-http-bearer": "=1.0.1",
     "react": "=15.6.1",
-    "react-bootstrap-dialog": "=0.9.1",
     "react-confirm-bootstrap": "=3.1.2",
     "react-dom": "=15.6.1",
     "react-redux": "=4.4.5",
@@ -111,6 +110,7 @@
     "react-router-redux": "^4.0.8",
     "react-tap-event-plugin": "=1.0.0",
     "redux": "=3.6.0",
+    "redux-form": "^7.3.0",
     "redux-thunk": "=2.1.0",
     "unirest": "=0.5.1"
   }
