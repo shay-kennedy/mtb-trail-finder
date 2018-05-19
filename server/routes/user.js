@@ -1,7 +1,6 @@
 import express from 'express'
 import passport from '../middleware/bearer-passport'
 import { User } from '../models'
-import { EditorFormatListNumbered } from 'material-ui';
 
 
 const router = express.Router()
