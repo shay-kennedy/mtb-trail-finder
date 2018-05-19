@@ -2,8 +2,10 @@ import express from 'express'
 import mongoose from 'mongoose'
 import passport from 'passport'
 import bodyParser from 'body-parser'
-import config from '../config'
 import routes from './routes'
+try {
+  const config = require('../config')
+} catch (e) {}
 
 
 const db = process.env.DBPATH || config.mongoDB.dbPath

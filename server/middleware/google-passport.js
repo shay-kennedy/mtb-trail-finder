@@ -1,7 +1,10 @@
 import passport from 'passport'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
-import config from '../../config'
 import { User } from '../models'
+try {
+  const config = require('../config')
+} catch (e) { }
+
 
 passport.use(new GoogleStrategy(
   {

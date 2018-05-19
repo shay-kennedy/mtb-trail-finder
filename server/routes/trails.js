@@ -1,7 +1,9 @@
 import express from 'express'
 import unirest from 'unirest'
 import passport from '../middleware/bearer-passport'
-import config from '../../config'
+try {
+  const config = require('../config')
+} catch (e) { }
 
 
 const router = express.Router()
