@@ -24,7 +24,7 @@ const store = createStore(
     window.devToolsExtension ? window.devToolsExtension() : (f) => f
   )
 )
-
+console.log('store', store)
 const history = syncHistoryWithStore(hashHistory, store)
 
 ReactDOM.render(
