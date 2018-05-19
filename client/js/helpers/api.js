@@ -26,7 +26,7 @@ export function fetchUser() {
 }
 
 export function logoutUser() {
-  const url = '/logout'
+  const url = '/user/logout'
   return api().get(url)
 }
 
@@ -37,7 +37,7 @@ export function fetchTrails(city, state) {
 
 export function addFavoriteTrail(props) {
   const userId = props.userId
-  const url = `/user/${userId}`
+  const url = `/user/favorites/add/${userId}`
   const body = {
     favorites: {
       'name': props.name,
@@ -55,7 +55,7 @@ export function addFavoriteTrail(props) {
 
 export function removeFavoriteTrail(props) {
   const trailId = props.trail_id
-  const url = `/user/favorites/${trailId}`
+  const url = `/user/favorites/remove/${trailId}`
   const body = {
     'googleID': props.userId,
   }

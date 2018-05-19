@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
-var UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   googleID: { 
     type: String, 
     index: true 
@@ -16,8 +16,9 @@ var UserSchema = new mongoose.Schema({
   fullName: {
     type: String
   }
-});
+})
 
 
-var User = mongoose.model('User', UserSchema);
-module.exports = User;
+const User = mongoose.model('User', UserSchema)
+
+export default User
