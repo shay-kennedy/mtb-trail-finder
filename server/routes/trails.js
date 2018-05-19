@@ -2,7 +2,7 @@ import express from 'express'
 import unirest from 'unirest'
 import passport from '../middleware/bearer-passport'
 try {
-  const config = require('../config')
+  var config = require('../../config').config
 } catch (e) { }
 
 
