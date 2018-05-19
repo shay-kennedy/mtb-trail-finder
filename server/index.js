@@ -4,7 +4,7 @@ import passport from 'passport'
 import bodyParser from 'body-parser'
 import routes from './routes'
 try {
-  const config = require('../config')
+  var config = require('../config').config
 } catch (e) {}
 
 
