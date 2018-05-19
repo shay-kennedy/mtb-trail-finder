@@ -17,19 +17,20 @@ app.use(passport.initialize())
 app.use(bodyParser.json())
 app.use('/', routes)
 
-const HOST = process.env.HOST || 'localhost'
+const HOST = process.env.HOST
 const PORT = process.env.PORT || 8080
 
 console.log(`Server running in ${process.env.NODE_ENV} mode`)
 
 function runServer() {
   return new Promise((resolve, reject) => {
-    app.listen(PORT, HOST, err => {
+    app.listen(PORT, HOST, (err) => {
       if (err) {
         console.error(err)
         reject(err)
       }
-      console.log(`Listening on ${HOST}:${PORT}`)
+      const host = HOST || 'localhost'
+      console.log(`Listening on ${host}:${PORT}`)
     })
   })
 }
