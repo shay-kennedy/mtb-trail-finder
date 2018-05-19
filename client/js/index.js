@@ -10,8 +10,6 @@ import { routerReducer, syncHistoryWithStore, routerMiddleware } from 'react-rou
 import * as reducers from './redux'
 import { reducer as form } from 'redux-form'
 
-console.log(`Client running in ${process.env.NODE_ENV} mode`)
-
 
 const allReducers = {
   ...reducers,
