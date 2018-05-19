@@ -32,7 +32,7 @@ const renderConfirm = (props) => {
 
 export class TrailDetail extends Component {
   render() {
-    const { 
+    const {
       url,
       name,
       city,
