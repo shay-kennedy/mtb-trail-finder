@@ -5,7 +5,7 @@ try {
   var config = require('../../config').config
 } catch (e) { }
 
-console.log(config)
+
 passport.use(new GoogleStrategy(
   {
     clientID: process.env.CLIENTID || config.googleAuth.clientID,
