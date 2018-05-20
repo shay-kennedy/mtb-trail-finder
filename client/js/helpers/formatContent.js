@@ -1,7 +1,7 @@
 import Parser from 'html-react-parser'
 
 
-export default function formatContent(string) {
+const formatContent = (string) => {
   let s = string.replace(/\\\'s/g, "\'s")
   s = s.split('&lt;br /&gt;').join('')
   s = s.replace(/&lt;br&gt;&lt;br&gt;/g, '')
@@ -17,3 +17,5 @@ export default function formatContent(string) {
   }
   return s
 }
+
+export default formatContent

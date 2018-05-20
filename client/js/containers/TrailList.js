@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Loader from 'react-loader-spinner'
@@ -41,30 +41,28 @@ const renderLoader = () => {
   )
 }
 
-export class TrailList extends Component {
-  render() {
-    const { trails, isFetching, userId } = this.props
-    return (
-      <div className="display">
-        <div className="favorites-button">
-          {userId && 
-            <Link to={'/trails/favorites'}>
-              <input type='button' value='Favorites' className='input-button btn btn-success' />
-            </Link>
-          }
-        </div>
-        <h3 className="sub-header">** TRAIL LIST **</h3>
-        {isFetching
-          ? renderLoader()
-          : renderTrails(trails)
+const TrailList = (props) => {
+  const { trails, isFetching, userId } = props
+  return (
+    <div className="display">
+      <div className="favorites-button">
+        {userId &&
+          <Link to={'/trails/favorites'}>
+            <input type='button' value='Favorites' className='input-button btn btn-success' />
+          </Link>
         }
       </div>
-    )
-  }
+      <h3 className="sub-header">** TRAIL LIST **</h3>
+      {isFetching
+        ? renderLoader()
+        : renderTrails(trails)
+      }
+    </div>
+  )
 }
 
 
-function mapStateToProps({ user, trails }) {
+const mapStateToProps = ({ user, trails }) => {
   return {
     trails: trails.trails,
     isFetching: trails.isFetching,

@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-function getField({ fieldType, input, type, placeholder, disabled, options }) {
+const getField = ({ fieldType, input, type, placeholder, disabled, options }) => {
   if (fieldType === 'select') {
     return (
-      <select {...input} 
+      <select {...input}
               disabled={disabled}
               className='form-control'>
         {renderOptions(options, placeholder)}
@@ -30,7 +30,7 @@ const renderOptions = (options, placeholder) => {
   return []
 }
 
-export function FormField(props) {
+export const FormField = (props) => {
   const {
     input,
     type,

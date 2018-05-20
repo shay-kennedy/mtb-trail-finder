@@ -39,13 +39,13 @@ export class TrailsMain extends Component {
 }
 
 
-function mapStateToProps({ user }) {
+const mapStateToProps = ({ user }) => {
 	return {
 		userId: user.googleID,
 	}
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchUser: () => { dispatch(fetchAndHandleUser()) },
     logoutUser: () => { dispatch(logout()) },

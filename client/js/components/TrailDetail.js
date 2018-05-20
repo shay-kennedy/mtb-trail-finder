@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import Confirm from 'react-confirm-bootstrap'
 import { addFavorite, removeFavorite } from '../redux/user'
@@ -30,43 +30,41 @@ const renderConfirm = (props) => {
   }
 }
 
-export class TrailDetail extends Component {
-  render() {
-    const {
-      url,
-      name,
-      city,
-      state,
-      length,
-      description,
-      directions,
-      userId,
-      addFavorite,
-      removeFavorite,
-      favoritesList,
-    } = this.props
-    return (
-      <div className="container rounded trails">
-        <h3 className="trail-title"><a href={url} target="_blank"> {name} </a></h3>
-        <p><strong>Location:</strong> {city}, {state}</p>
-        <p><strong>Track Length:</strong> {length} miles</p>
-        <p><strong>Description:</strong> {formatContent(description)}</p>
-        <p><strong>Directions:</strong> {formatContent(directions)}</p>
-        {userId && renderConfirm(this.props)}
-      </div>
-    )
-  }
+const TrailDetail = (props) => {
+  const {
+    url,
+    name,
+    city,
+    state,
+    length,
+    description,
+    directions,
+    userId,
+    addFavorite,
+    removeFavorite,
+    favoritesList,
+  } = props
+  return (
+    <div className="container rounded trails">
+      <h3 className="trail-title"><a href={url} target="_blank"> {name} </a></h3>
+      <p><strong>Location:</strong> {city}, {state}</p>
+      <p><strong>Track Length:</strong> {length} miles</p>
+      <p><strong>Description:</strong> {formatContent(description)}</p>
+      <p><strong>Directions:</strong> {formatContent(directions)}</p>
+      {userId && renderConfirm(props)}
+    </div>
+  )
 }
 
 
-function mapStateToProps({ user }) {
+const mapStateToProps = ({ user }) => {
   return {
     userId: user.googleID,
     favorites: user.favorites
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     addFavorite: (props) => { dispatch(addFavorite(props)) },
     removeFavorite: (props) => { dispatch(removeFavorite(props)) },

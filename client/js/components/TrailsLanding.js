@@ -13,18 +13,18 @@ const renderFavoritesButton = () => {
 	)
 }
 
-export default function TrailsLanding() {
+const TrailsLanding = () => {
 	const token = Cookies.get('accessToken')
 	return (
 		<div className="trails-page">
-			<div className="inputs">					
+			<div className="inputs">
 				<div className="landing-container">
 					<div className="landing-text">
 						<p>Welcome!</p>
 						<p>Use the search above to find mountain biking trails near you.</p>
 						<p>Or if you're planning a trip, scout out the area ahead of time.</p>
 					</div>
-					{token 
+					{token
 						? renderFavoritesButton()
 						: <a href="/auth/google" target="_self">Login for Favorites</a>
 					}
@@ -33,3 +33,5 @@ export default function TrailsLanding() {
 		</div>
 	)
 }
+
+export default TrailsLanding

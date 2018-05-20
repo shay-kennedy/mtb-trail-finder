@@ -2,15 +2,15 @@ import * as axios from 'axios'
 import Cookies from 'js-cookie'
 
 
-function api() {
+const api = () => {
   const apiClient = axios.create({
     baseURL: window.location.origin
   })
   const authtoken = Cookies.get('accessToken') || ''
   apiClient.defaults.headers.common['Authorization'] = `bearer ${authtoken}`
-  apiClient.interceptors.response.use((response) => {
+  apiClient.interceptors.response.use(response => {
     return Promise.resolve(response)
-  }, (error) => {
+  }, error => {
     if (error.response.status === 401) {
       Cookies.remove('accessToken')
       window.location = "/"
@@ -20,44 +20,47 @@ function api() {
   return apiClient
 }
 
-export function fetchUser() {
+export const fetchUser = () => {
   const url = '/user'
   return api().get(url)
 }
 
-export function logoutUser() {
+export const logoutUser = () => {
   const url = '/user/logout'
   return api().get(url)
 }
 
-export function fetchTrails(city, state) {
+export const fetchTrails = (city, state) => {
   const url = `/trails/${city}/${state}`
   return api().get(url)
 }
 
-export function addFavoriteTrail(props) {
-  const userId = props.userId
-  const url = `/user/favorites/add/${userId}`
+export const addFavoriteTrail = (props) => {
+  const {
+    userId, name, city, state, url, length,
+    description, directions, trail_id
+  } = props
+  const apiUrl = `/user/favorites/add/${userId}`
   const body = {
     favorites: {
-      'name': props.name,
-      'city': props.city,
-      'state': props.state,
-      'url': props.url,
-      'length': props.length,
-      'description': props.description,
-      'directions': props.directions,
-      'trail_id': props.trail_id,
+      name,
+      city,
+      state,
+      url,
+      length,
+      description,
+      directions,
+      trail_id,
     }
   }
-  return api().put(url, body)
+  return api().put(apiUrl, body)
 }
 
-export function removeFavoriteTrail(props) {
-  const trailId = props.trail_id
-  const url = `/user/favorites/remove/${trailId}`
+export const removeFavoriteTrail = (props) => {
+  const { trail_id, userId } = props
+  const url = `/user/favorites/remove/${trail_id}`
   const body = {
-    'googleID': props.userId,
+    'googleID': userId,
   }
   return api().put(url, body)
 }

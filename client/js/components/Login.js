@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 
 
-export default function Login() {
+const Login = () => {
   return (
     <div className="login-page">
       <h1>MTB Trail Finder</h1>
@@ -14,3 +14,5 @@ export default function Login() {
     </div>
   )
 }
+
+export default Login

@@ -1,9 +1,6 @@
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
-import {
-  TrailsLanding,
-  Login,
-} from '../components'
+import { TrailsLanding, Login } from '../components'
 import {
   Main,
   TrailFavorites,
@@ -12,7 +9,7 @@ import {
 } from '../containers'
 
 
-export default function getRoutes(history) {
+const getRoutes = (history) => {
   return (
     <Router history={history} >
       <Route path="/" component={Main} >
@@ -26,3 +23,5 @@ export default function getRoutes(history) {
     </Router>
   )
 }
+
+export default getRoutes
