@@ -13,8 +13,7 @@ passport.use(new GoogleStrategy(
     callbackURL: process.env.CALLBACKURL || config.googleAuth.callbackURL,
   },
   function (accessToken, refreshToken, profile, done) {
-    User.findOne(
-      { googleID: profile.id })
+    User.findOne({ googleID: profile.id })
       .catch(err => done(err))
       .then(user => {
         if (!user) {
