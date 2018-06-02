@@ -1,6 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import Cookies from 'js-cookie'
 
 
 const renderFavoritesButton = () => {
@@ -13,8 +13,7 @@ const renderFavoritesButton = () => {
 	)
 }
 
-const TrailsLanding = () => {
-	const token = Cookies.get('accessToken')
+const TrailsLanding = (props) => {
 	return (
 		<div className="trails-page">
 			<div className="inputs">
@@ -24,7 +23,7 @@ const TrailsLanding = () => {
 						<p>Use the search above to find mountain biking trails near you.</p>
 						<p>Or if you're planning a trip, scout out the area ahead of time.</p>
 					</div>
-					{token
+          {props.userId
 						? renderFavoritesButton()
 						: <a href="/auth/google" target="_self">Login for Favorites</a>
 					}
@@ -34,4 +33,11 @@ const TrailsLanding = () => {
 	)
 }
 
-export default TrailsLanding
+
+const mapStateToProps = ({ user }) => {
+  return {
+    userId: user.googleID,
+  }
+}
+
+export default connect(mapStateToProps)(TrailsLanding)

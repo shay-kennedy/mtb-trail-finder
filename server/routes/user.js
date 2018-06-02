@@ -25,14 +25,14 @@ router.get('/',
   }
 )
 
-router.put('/favorites/add/:googleID',
+router.put('/favorites/add',
   passport.authenticate(
     'bearer',
     {session: false}
   ),
   function(req, res) {
     User.findOneAndUpdate(
-      { 'googleID':req.params.googleID },
+      { 'googleID':req.user.googleID },
       { $addToSet : { 'favorites':req.body.favorites } },
       { new: true })
       .catch(err => res.send(err))
@@ -40,14 +40,14 @@ router.put('/favorites/add/:googleID',
   }
 )
 
-router.put('/favorites/remove/:trail_id',
+router.delete('/favorites/remove/:trail_id',
   passport.authenticate(
     'bearer',
     {session: false}
   ),
   function(req, res) {
     const trailID = parseInt(req.params.trail_id)
-    const googleID = req.body.googleID
+    const googleID = req.user.googleID
     User.findOneAndUpdate(
       { 'favorites.trail_id':trailID, 'googleID':googleID },
       { $pull : { 'favorites': { 'trail_id':trailID } } },
