@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Confirm from 'react-confirm-bootstrap'
-import { addFavorite, removeFavorite } from '../redux/user'
+import { addFavorite, removeFavorite } from '../redux/modules/user'
 import formatContent from '../helpers/formatContent'
 
 
@@ -40,9 +40,6 @@ const TrailDetail = (props) => {
     description,
     directions,
     userId,
-    addFavorite,
-    removeFavorite,
-    favoritesList,
   } = props
   return (
     <div className="container rounded trails">

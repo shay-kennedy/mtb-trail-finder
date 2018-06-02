@@ -37,10 +37,10 @@ export const fetchTrails = (city, state) => {
 
 export const addFavoriteTrail = (props) => {
   const {
-    userId, name, city, state, url, length,
+    name, city, state, url, length,
     description, directions, trail_id
   } = props
-  const apiUrl = `/user/favorites/add/${userId}`
+  const apiUrl = `/user/favorites/add`
   const body = {
     favorites: {
       name,
@@ -59,8 +59,5 @@ export const addFavoriteTrail = (props) => {
 export const removeFavoriteTrail = (props) => {
   const { trail_id, userId } = props
   const url = `/user/favorites/remove/${trail_id}`
-  const body = {
-    'googleID': userId,
-  }
-  return api().put(url, body)
+  return api().delete(url)
 }

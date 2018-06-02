@@ -32,14 +32,8 @@ const renderOptions = (options, placeholder) => {
 
 export const FormField = (props) => {
   const {
-    input,
-    type,
-    placeholder,
-    disabled,
     fieldType,
-    options,
     meta: { touched, error, visited, active },
-    meta,
   } = props
   return (
     <div className={`form-group ${fieldType == 'select' ? 'select' : ''}`}>

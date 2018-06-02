@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import { routerReducer, syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
-import * as reducers from './redux'
+import * as reducers from './redux/modules'
 import { reducer as form } from 'redux-form'
 
 
