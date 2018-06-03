@@ -6,9 +6,11 @@ import { Link } from 'react-router'
 const renderFavoritesButton = () => {
 	return (
 		<Link to={'/trails/favorites'}>
-			<input type='button'
-						 value='Your Favorites'
-						 className='input-button btn btn-success landing-favorite' />
+      <input
+        type='button'
+				value='Your Favorites'
+				className='input-button btn btn-success landing-favorite'
+      />
 		</Link>
 	)
 }

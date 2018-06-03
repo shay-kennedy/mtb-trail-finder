@@ -56,8 +56,7 @@ export const addFavoriteTrail = (props) => {
   return api().put(apiUrl, body)
 }
 
-export const removeFavoriteTrail = (props) => {
-  const { trail_id, userId } = props
-  const url = `/user/favorites/remove/${trail_id}`
+export const removeFavoriteTrail = (trailId) => {
+  const url = `/user/favorites/remove/${trailId}`
   return api().delete(url)
 }

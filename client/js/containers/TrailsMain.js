@@ -30,9 +30,11 @@ export class TrailsMain extends Component {
             {children}
           </div>
         </div>
-        {userId && <div className="logout">
-          <button onClick={() => logoutUser()} className='input-button btn btn-warning'>Logout</button>
-        </div>}
+        {userId &&
+          <div className="logout">
+            <button onClick={() => logoutUser()} className='input-button btn btn-warning'>Logout</button>
+          </div>
+        }
       </div>
     )
   }

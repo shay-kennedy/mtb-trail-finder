@@ -30,21 +30,27 @@ const TrailLocationForm = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit(submit())}>
-        <Field type="text"
-               name="city"
-               placeholder="Enter City"
-               component={FormField} />
-        <Field type="text"
-               name="state"
-               fieldType="select"
-               placeholder="Select State"
-               options={getStateOptions()}
-               component={FormField} />
+        <Field
+          type="text"
+          name="city"
+          placeholder="Enter City"
+          component={FormField}
+        />
+        <Field
+          type="text"
+          name="state"
+          fieldType="select"
+          placeholder="Select State"
+          options={getStateOptions()}
+          component={FormField}
+        />
         <span className="search-button">
-          <input className="btn btn-success btn-secondary"
-                 type="submit"
-                 value={submitting ? 'Searching' : 'Search'}
-                 disabled={submitting || invalid} />
+          <input
+            className="btn btn-success btn-secondary"
+            type="submit"
+            value={submitting ? 'Searching' : 'Search'}
+            disabled={submitting || invalid}
+          />
         </span>
       </form>
     </div>

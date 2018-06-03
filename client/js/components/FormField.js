@@ -4,19 +4,19 @@ import React from 'react'
 const getField = ({ fieldType, input, type, placeholder, disabled, options }) => {
   if (fieldType === 'select') {
     return (
-      <select {...input}
-              disabled={disabled}
-              className='form-control'>
+      <select {...input} disabled={disabled} className='form-control' >
         {renderOptions(options, placeholder)}
       </select>
     )
   }
   return (
-    <input {...input}
-           placeholder={placeholder}
-           disabled={disabled}
-           type={type}
-           className='form-control' />
+    <input
+      {...input}
+      placeholder={placeholder}
+      disabled={disabled}
+      type={type}
+      className='form-control'
+    />
   )
 }
 

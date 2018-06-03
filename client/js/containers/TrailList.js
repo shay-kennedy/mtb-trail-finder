@@ -48,7 +48,11 @@ const TrailList = (props) => {
       <div className="favorites-button">
         {userId &&
           <Link to={'/trails/favorites'}>
-            <input type='button' value='Favorites' className='input-button btn btn-success' />
+            <input
+              type='button'
+              value='Favorites'
+              className='input-button btn btn-success'
+            />
           </Link>
         }
       </div>
