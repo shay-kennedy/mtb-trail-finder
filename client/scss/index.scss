@@ -33,7 +33,12 @@ body {
 }
 
 .container {
-	min-height: 500px;
+    min-height: calc(100vh - 100px);
+}
+
+.footer {
+    height: 30px;
+    text-align: center;
 }
 
 .search, .search:hover {
