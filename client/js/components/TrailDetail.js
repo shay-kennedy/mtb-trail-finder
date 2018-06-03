@@ -9,10 +9,11 @@ const renderConfirm = (props) => {
   if (props.favoritesList) {
     return (
       <Confirm
-        onConfirm={() => props.removeFavorite(props)}
+        onConfirm={() => props.removeFavorite(props.trail_id)}
         body="Are you sure you want to remove this trail from your favorites?"
         confirmText="Confirm Remove"
-        title="Remove from Favorites">
+        title="Remove from Favorites"
+      >
         <button className="btn btn-outline-danger btn-sm" >Remove from Favorites</button>
       </Confirm>
     )
@@ -23,7 +24,8 @@ const renderConfirm = (props) => {
         body="Are you sure you want to add this trail to your favorites?"
         confirmText="Confirm Add"
         confirmBSStyle="success"
-        title="Add to Favorites">
+        title="Add to Favorites"
+      >
         <button className="btn btn-outline-success btn-sm">Add to Favorites</button>
       </Confirm>
     )

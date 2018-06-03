@@ -9,7 +9,7 @@
 
 ----
 ### Screenshot
-![Screenshot](screenshot.png)
+![Screenshot](find-my-trails.jpg)
 
 ----
 ### Technology
