@@ -19,7 +19,7 @@ export class TrailsMain extends Component {
       <div>
         <div className="container trails-page">
           <div className="row trail-title">
-            <h1 className="page-title"><Link to={'/trails'} >MTB Trail Finder</Link></h1>
+            <h1 className="page-title"><Link to={'/trails'} >Find My Trails</Link></h1>
           </div>
           <div className="inputs">
             <div className="input-field">

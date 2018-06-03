@@ -9,7 +9,7 @@ const renderTrails = (trails) => {
   if (trails.length === 0) {
     return (
       <div className="rounded no-results">
-        No trails were found. Please try a new search.
+        No results were found. Please try a new search.
       </div>
     )
   } else {
