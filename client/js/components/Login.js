@@ -1,8 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router'
+import Cookies from 'js-cookie'
 
 
 const Login = () => {
+  const token = Cookies.get('accessToken')
+  if (token) {
+    window.location = '/#/trails'
+  }
   return (
     <div className="login-page">
       <h1>Find My Trails</h1>
