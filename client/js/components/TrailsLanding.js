@@ -16,7 +16,10 @@ const renderFavoritesButton = () => {
 }
 
 const TrailsLanding = (props) => {
-	return (
+  if (props.isFetching) {
+    return null
+  }
+  return (
 		<div className="trails-page">
 			<div className="inputs">
 				<div className="landing-container">
@@ -39,6 +42,7 @@ const TrailsLanding = (props) => {
 const mapStateToProps = ({ user }) => {
   return {
     userId: user.googleID,
+    isFetching: user.isFetching,
   }
 }
 
