@@ -26,7 +26,7 @@
 ----
 ### App Features
 * Google Authentication/Login
-* Search By City/State
-* Return List of MTB Trails with Trail Info
-* Ability to add trails as favorites
+* Search by city/state
+* Return list of Mountain Biking Trails with trail details
+* Ability to save trails as favorites
 * User trail favorites saved to MongoDB

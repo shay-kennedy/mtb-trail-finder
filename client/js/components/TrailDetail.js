@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Confirm from 'react-confirm-bootstrap'
 import { addFavorite, removeFavorite } from '../redux/modules/user'
-import formatContent from '../helpers/formatContent'
+import formatContent from '../utils/formatContent'
 
 
 const renderConfirm = (props) => {

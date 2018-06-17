@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm, reset } from 'redux-form'
 import { fetchAndHandleTrails } from '../redux/modules/trails'
 import { FormField } from '../components/FormField'
-import { STATE_LIST } from '../helpers/constants'
+import { STATE_LIST } from '../utils/constants'
 
 
 const submit = () => {

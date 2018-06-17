@@ -1,4 +1,4 @@
-import { fetchTrails } from '../../helpers/api'
+import { fetchTrails } from '../../utils/api'
 
 const FETCHING_TRAILS = 'FETCHING_TRAILS'
 const FETCHING_TRAILS_SUCCESS = 'FETCHING_TRAILS_SUCCESS'

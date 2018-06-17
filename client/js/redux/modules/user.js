@@ -4,7 +4,7 @@ import {
   logoutUser,
   addFavoriteTrail,
   removeFavoriteTrail,
-} from '../../helpers/api'
+} from '../../utils/api'
 
 const FETCHING_USER = 'FETCHING_USER'
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS'
