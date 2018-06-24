@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { FavoriteDetail, TrailDetail } from '../components'
+import { TrailDetail } from '../containers'
 
 
 const renderTrailDetail = (favorites) => {

@@ -1,8 +1,11 @@
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
-import { TrailsLanding, Login } from '../components'
 import {
-  Main,
+  TrailsLanding,
+  Login,
+  Main
+} from '../components'
+import {
   TrailFavorites,
   TrailList,
   TrailsMain,
