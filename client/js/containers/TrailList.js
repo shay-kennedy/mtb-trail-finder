@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import Loader from 'react-loader-spinner'
-import { TrailDetail } from '../components'
+import { TrailDetail } from '../containers'
 
 
 const renderTrails = (trails) => {

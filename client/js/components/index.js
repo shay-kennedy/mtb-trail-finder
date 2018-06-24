@@ -1,4 +1,4 @@
 export FormField from './FormField'
 export Login from './Login'
-export TrailDetail from './TrailDetail'
+export Main from './Main'
 export TrailsLanding from './TrailsLanding'
